@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для ученых | Munis Science Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #2ec4b6;
+            --accent: #ff9f1c;
+            --dark: #0d1b2a;
+            --gray-dark: #1b263b;
+            --gray: #415a77;
+            --gray-light: #778da9;
+            --light: #e0e1dd;
+            --white: #ffffff;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e71d36;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Styles */
+        .main-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        
+        .footer-logo-image {
+            margin-bottom: 10px;
+        }
+
+        .logo-text .accent {
+            color: var(--primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn-text {
+            background-color: transparent;
+            color: var(--primary);
+            padding: 0.5rem 0;
+        }
+
+        .btn-text:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--dark);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 3rem;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.05) 0%, rgba(46, 196, 182, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(46, 196, 182, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #9d4edd 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            max-width: 500px;
+            z-index: 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            background-color: rgba(157, 78, 221, 0.1);
+            color: #9d4edd;
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background-color: rgba(46, 196, 182, 0.1);
+            color: var(--secondary);
+        }
+
+        .feature-card:nth-child(4) .feature-icon {
+            background-color: rgba(255, 159, 28, 0.1);
+            color: var(--accent);
+        }
+
+        .feature-card:nth-child(5) .feature-icon {
+            background-color: rgba(231, 29, 54, 0.1);
+            color: var(--danger);
+        }
+
+        .feature-card:nth-child(6) .feature-icon {
+            background-color: rgba(13, 27, 42, 0.1);
+            color: var(--dark);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 5rem 0;
+            background-color: rgba(237, 242, 247, 0.5);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .steps-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .steps-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .steps-content h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .step-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Success Stories */
+        .success-section {
+            padding: 5rem 0;
+        }
+
+        .success-story {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .success-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .success-image {
+            flex-shrink: 0;
+            width: 250px;
+            height: 150px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .success-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .success-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-info .meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-item {
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .success-desc p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .success-quote {
+            background-color: rgba(67, 97, 238, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .success-quote p {
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-author {
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(67, 97, 238, 0.1) 100%);
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-logo .accent {
+            color: var(--primary);
+        }
+
+        .footer-logo p {
+            color: var(--gray-light);
+            max-width: 300px;
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-nav-section h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-nav-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-nav-section ul {
+            list-style: none;
+        }
+
+        .footer-nav-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-nav-section a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom span {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .hero-image {
+                width: 35%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-image {
+                display: none;
+            }
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            .steps-image {
+                order: -1;
+            }
+            .success-header {
+                flex-direction: column;
+            }
+            .success-image {
+                width: 100%;
+                height: 200px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .footer-nav {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .header-actions .btn-outline {
+                display: none;
+            }
+            .success-story {
+                padding: 1.5rem;
+            }
+            .footer-nav {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card, .step-item, .success-story {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .step-item:nth-child(1) { animation-delay: 0.1s; }
+        .step-item:nth-child(2) { animation-delay: 0.2s; }
+        .step-item:nth-child(3) { animation-delay: 0.3s; }
+        .step-item:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="projects.html">Проекты</a></li>
+                        <li><a href="challenges.html">Запросы</a></li>
+                        <li><a href="about.html">О платформе</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-outline">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Превратите вашу научную разработку в успешный проект</h1>
+                    <p class="hero-subtitle">Munis Science Hub помогает ученым и исследователям найти финансирование, партнеров и сделать свой проект коммерчески успешным</p>
+                    <div class="hero-cta">
+                        <a href="#features" class="btn btn-primary btn-lg">Возможности платформы</a>
+                        <a href="#register" class="btn btn-outline btn-lg">Разместить проект</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Научная лаборатория">
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Что платформа дает ученым</h2>
+                <p class="section-subtitle">Munis Science Hub предоставляет комплексную поддержку для проектов на всех этапах развития - от идеи до выхода на рынок</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3>Привлечение инвестиций</h3>
+                        <p>Представьте ваш проект потенциальным инвесторам - от венчурных фондов до компаний, заинтересованных во внедрении технологий.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Партнерство с бизнесом</h3>
+                        <p>Найдите коммерческих партнеров для вашего проекта, которые помогут с масштабированием и выходом на рынок.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3>Правовая поддержка</h3>
+                        <p>Получите помощь в защите интеллектуальной собственности и составлении договоров с инвесторами и партнерами.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Бизнес-консультации</h3>
+                        <p>Консультации по разработке бизнес-модели, маркетинговой стратегии и оценке коммерческого потенциала проекта.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Научное сообщество</h3>
+                        <p>Найдите коллег для совместных исследований и разработок, получите обратную связь по вашему проекту.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Запросы от бизнеса</h3>
+                        <p>Получите доступ к реальным запросам от бизнеса на решение технологических задач с конкретным бюджетом.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps-section">
+            <div class="container">
+                <div class="steps-container">
+                    <div class="steps-content">
+                        <h2>Как разместить проект на платформе</h2>
+                        
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-info">
+                                <h3>Регистрация</h3>
+                                <p>Создайте аккаунт ученого или исследовательской команды на Munis Science Hub, подтвердите вашу научную квалификацию.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-info">
+                                <h3>Описание проекта</h3>
+                                <p>Заполните информацию о вашем проекте - научная область, уровень готовности (TRL), необходимые инвестиции и потенциальное применение.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-info">
+                                <h3>Модерация и верификация</h3>
+                                <p>Наши эксперты проверят информацию о проекте и при необходимости помогут доработать его описание для повышения привлекательности.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-info">
+                                <h3>Публикация и продвижение</h3>
+                                <p>После проверки ваш проект будет опубликован на платформе и представлен потенциальным инвесторам и бизнес-партнерам.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="steps-image">
+                        <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Процесс размещения проекта">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="success-section">
+            <div class="container">
+                <h2 class="section-title">Истории успеха</h2>
+                <p class="section-subtitle">Познакомьтесь с проектами, которые успешно привлекли инвестиции через нашу платформу</p>
+                
+                <div class="success-story">
+                    <div class="success-header">
+                        <div class="success-image">
+                            <img src="https://images.unsplash.com/photo-1564325724739-bae0bd08762c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Проект биодеградируемых материалов">
+                        </div>
+                        <div class="success-info">
+                            <h3>Биодеградируемые полимеры из микроводорослей</h3>
+                            <div class="meta">
+                                <span class="meta-item"><i class="fas fa-flask"></i> Биотехнологии</span>
+                                <span class="meta-item"><i class="fas fa-chart-line"></i> Инвестиции: 25 млн UZS</span>
+                            </div>
+                            <div class="success-desc">
+                                <p>Команда ученых из Института биохимии РАН разработала технологию производства экологичных полимеров на основе биомассы микроводорослей. Через платформу Munis Science Hub проект привлек инвестиции и нашел производственного партнера.</p>
+                                <p>Сейчас технология вышла на этап промышленного внедрения, а компания заключила контракты с крупными производителями упаковки.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="success-quote">
+                        <p>"Munis Science Hub помог нам не только найти инвестиции, но и правильно сформулировать коммерческую ценность нашей разработки. Благодаря платформе мы познакомились с нашим главным индустриальным партнером, который помог масштабировать технологию."</p>
+                        <div class="quote-author">Лола Рахимова, руководитель проекта</div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-outline">Подробнее о проекте</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="cta-section">
+            <div class="container">
+                <div class="cta-container">
+                    <h2>Готовы представить свой проект?</h2>
+                    <p>Зарегистрируйтесь на платформе и разместите информацию о вашей научной разработке. Мы поможем найти инвестиции и партнеров для ее реализации.</p>
+                    <a href="register.html" class="btn btn-primary btn-lg">Зарегистрироваться</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image footer-logo-image" style="filter: brightness(0) invert(1);">
+                    <p>Объединяем науку и бизнес для создания технологий будущего</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-section">
+                        <h4>Платформа</h4>
+                        <ul>
+                            <li><a href="projects.html">Проекты</a></li>
+                            <li><a href="challenges.html">Запросы</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="help.html">Помощь</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Для пользователей</h4>
+                        <ul>
+                            <li><a href="for-scientists.html">Ученым</a></li>
+                            <li><a href="for-investors.html">Инвесторам</a></li>
+                            <li><a href="for-business.html">Бизнесу</a></li>
+                            <li><a href="for-government.html">Госорганам</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Контакты</h4>
+                        <ul>
+                            <li><a href="mailto:info@scitechhub.uz">info@scitechhub.uz</a></li>
+                            <li><a href="tel:+998712345678">+998 (71) 234-56-78</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2023 Munis Science Hub. Все права защищены.</span>
+                <div class="footer-links">
+                    <a href="terms.html">Условия использования</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            header.classList.toggle('sticky', window.scrollY > 10);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

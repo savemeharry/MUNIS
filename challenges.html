@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запросы | Munis Science Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #2ec4b6;
+            --accent: #ff9f1c;
+            --dark: #0d1b2a;
+            --gray-dark: #1b263b;
+            --gray: #415a77;
+            --gray-light: #778da9;
+            --light: #e0e1dd;
+            --white: #ffffff;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e71d36;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Styles */
+        .main-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+        
+        .footer-logo-image {
+            margin-bottom: 10px;
+        }
+
+        .logo-text .accent {
+            color: var(--primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .main-nav a.active {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn-text {
+            background-color: transparent;
+            color: var(--primary);
+            padding: 0.5rem 0;
+        }
+
+        .btn-text:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--dark);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(46, 196, 182, 0.05) 100%);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(46, 196, 182, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Challenges Section */
+        .challenges-section {
+            padding: 5rem 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-intro p {
+            color: var(--gray);
+        }
+
+        .create-challenge {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .challenges-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-categories {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--light);
+            color: var(--gray);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            background-color: var(--gray-light);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .challenges-sort {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sort-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            background-color: white;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .challenge-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .challenge-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .challenge-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .challenge-card:hover .challenge-image img {
+            transform: scale(1.05);
+        }
+
+        .challenge-org-logo {
+            position: absolute;
+            bottom: -25px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .challenge-org-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .challenge-card-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .challenge-category {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .challenge-deadline {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .challenge-title {
+            padding: 0 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .challenge-desc {
+            padding: 0 1.5rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .challenge-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .challenge-reward {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            background-color: white;
+            color: var(--gray);
+            border: 1px solid var(--light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pagination-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .pagination-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-logo .accent {
+            color: var(--primary);
+        }
+
+        .footer-logo p {
+            color: var(--gray-light);
+            max-width: 300px;
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-nav-section h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-nav-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-nav-section ul {
+            list-style: none;
+        }
+
+        .footer-nav-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-nav-section a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom span {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                position: relative;
+            }
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .page-header {
+                padding: 3rem 0;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .footer-nav {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .header-actions .btn-outline {
+                display: none;
+            }
+            .challenges-filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-nav {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .challenge-card {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .challenge-card:nth-child(1) { animation-delay: 0.1s; }
+        .challenge-card:nth-child(2) { animation-delay: 0.2s; }
+        .challenge-card:nth-child(3) { animation-delay: 0.3s; }
+        .challenge-card:nth-child(4) { animation-delay: 0.4s; }
+        .challenge-card:nth-child(5) { animation-delay: 0.5s; }
+        .challenge-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="projects.html">Проекты</a></li>
+                        <li><a href="challenges.html" class="active">Запросы</a></li>
+                        <li><a href="about.html">О платформе</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-outline">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Запросы на технологические решения</h1>
+                    <p>Найдите реальные запросы от бизнеса и государства на инновационные технологические решения</p>
+                    <a href="#form-challenge" class="btn btn-primary btn-lg">Разместить запрос</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="challenges-section">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>Найдите решение своей технологической задачи</h2>
+                    <p>Сформулируйте запрос и получите доступ к передовым разработкам и талантливым научным командам, которые готовы предложить инновационные решения для вашего бизнеса.</p>
+                </div>
+
+                <div class="challenges-filters">
+                    <div class="filter-categories">
+                        <button class="filter-btn active">Все</button>
+                        <button class="filter-btn">Промышленность</button>
+                        <button class="filter-btn">Энергетика</button>
+                        <button class="filter-btn">Медицина</button>
+                        <button class="filter-btn">IT</button>
+                        <button class="filter-btn">Транспорт</button>
+                        <button class="filter-btn">Агротехнологии</button>
+                    </div>
+                    <div class="challenges-sort">
+                        <span class="sort-label">Сортировать по:</span>
+                        <select class="sort-select">
+                            <option value="newest">Новизне</option>
+                            <option value="deadline">Сроку подачи</option>
+                            <option value="budget">Бюджету</option>
+                            <option value="popularity">Популярности</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="challenges-grid">
+                    <!-- Challenge Card 1 -->
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Сокращение энергозатрат при производстве алюминия">
+                            <div class="challenge-org-logo">
+                                <img src="https://via.placeholder.com/50x50.png?text=ПТ" alt="Логотип ПромТех">
+                            </div>
+                        </div>
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Промышленность</span>
+                            <span class="challenge-deadline">Срок: 30.11.2023</span>
+                        </div>
+                        <h3 class="challenge-title">Сокращение энергозатрат при производстве алюминия</h3>
+                        <p class="challenge-desc">Ищем решение для снижения потребления электроэнергии на 20% при электролизе алюминия без потери качества готовой продукции.</p>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">Грант: 5 млн UZS</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Challenge Card 2 -->
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <img src="https://images.unsplash.com/photo-1586699253884-e199770f63b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Система мониторинга состояния почвы">
+                            <div class="challenge-org-logo">
+                                <img src="https://via.placeholder.com/50x50.png?text=АИ" alt="Логотип АгроИнновации">
+                            </div>
+                        </div>
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Агротехнологии</span>
+                            <span class="challenge-deadline">Срок: 15.12.2023</span>
+                        </div>
+                        <h3 class="challenge-title">Система мониторинга состояния почвы</h3>
+                        <p class="challenge-desc">Требуется разработка сети автономных датчиков для анализа свойств почвы в реальном времени с возможностью передачи данных в центр управления.</p>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">Пилотное внедрение + контракт</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Challenge Card 3 -->
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Технология переработки строительных отходов">
+                            <div class="challenge-org-logo">
+                                <img src="https://via.placeholder.com/50x50.png?text=СГ" alt="Логотип СтройГрад">
+                            </div>
+                        </div>
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Промышленность</span>
+                            <span class="challenge-deadline">Срок: 20.01.2024</span>
+                        </div>
+                        <h3 class="challenge-title">Технология переработки строительных отходов</h3>
+                        <p class="challenge-desc">Ищем экономически эффективную технологию переработки и вторичного использования строительных отходов с минимальным экологическим следом.</p>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">До 10 млн UZS + внедрение</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Challenge Card 4 -->
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Система ранней диагностики опухолей">
+                            <div class="challenge-org-logo">
+                                <img src="https://via.placeholder.com/50x50.png?text=МЦ" alt="Логотип МедЦентр">
+                            </div>
+                        </div>
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Медицина</span>
+                            <span class="challenge-deadline">Срок: 10.02.2024</span>
+                        </div>
+                        <h3 class="challenge-title">Система ранней диагностики опухолей с использованием AI</h3>
+                        <p class="challenge-desc">Требуется разработка системы на основе искусственного интеллекта для ранней диагностики онкологических заболеваний по результатам стандартных исследований.</p>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">Грант: 7.5 млн UZS + внедрение</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Challenge Card 5 -->
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <img src="https://images.unsplash.com/photo-1473308822086-710304d7d30c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Повышение эффективности солнечных панелей">
+                            <div class="challenge-org-logo">
+                                <img src="https://via.placeholder.com/50x50.png?text=ЭК" alt="Логотип ЭнергоКомплекс">
+                            </div>
+                        </div>
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Энергетика</span>
+                            <span class="challenge-deadline">Срок: 05.03.2024</span>
+                        </div>
+                        <h3 class="challenge-title">Повышение эффективности солнечных панелей в северных регионах</h3>
+                        <p class="challenge-desc">Ищем технологию, повышающую эффективность работы солнечных панелей при низких температурах и ограниченном солнечном излучении.</p>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">До 15 млн UZS + роялти</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Challenge Card 6 -->
+                    <div class="challenge-card">
+                        <div class="challenge-image">
+                            <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Система предиктивного обслуживания транспорта">
+                            <div class="challenge-org-logo">
+                                <img src="https://via.placeholder.com/50x50.png?text=ТЛ" alt="Логотип ТрансЛогистика">
+                            </div>
+                        </div>
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Транспорт</span>
+                            <span class="challenge-deadline">Срок: 25.12.2023</span>
+                        </div>
+                        <h3 class="challenge-title">Система предиктивного обслуживания транспортного парка</h3>
+                        <p class="challenge-desc">Требуется разработка системы, прогнозирующей необходимость технического обслуживания транспортных средств на основе анализа данных телеметрии.</p>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">3 млн UZS + пилотное внедрение</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="form-challenge" class="section-challenge-form">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>Разместите свой запрос</h2>
+                    <p>Заполните форму ниже и наши эксперты помогут вам сформулировать техническое задание и найти подходящие научные команды</p>
+                </div>
+                
+                <!-- Здесь будет форма для размещения запроса -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image footer-logo-image" style="filter: brightness(0) invert(1);">
+                    <p>Объединяем науку и бизнес для создания технологий будущего</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-section">
+                        <h4>Платформа</h4>
+                        <ul>
+                            <li><a href="projects.html">Проекты</a></li>
+                            <li><a href="challenges.html">Запросы</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="help.html">Помощь</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Для пользователей</h4>
+                        <ul>
+                            <li><a href="for-scientists.html">Ученым</a></li>
+                            <li><a href="for-investors.html">Инвесторам</a></li>
+                            <li><a href="for-business.html">Бизнесу</a></li>
+                            <li><a href="for-government.html">Госорганам</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Контакты</h4>
+                        <ul>
+                            <li><a href="mailto:info@scitechhub.uz">info@scitechhub.uz</a></li>
+                            <li><a href="tel:+998712345678">+998 (71) 234-56-78</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2023 Munis Science Hub. Все права защищены.</span>
+                <div class="footer-links">
+                    <a href="terms.html">Условия использования</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            header.classList.toggle('sticky', window.scrollY > 10);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+
+        // Filter buttons
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Here you would add the actual filtering logic
+            });
+        });
+    </script>
+</body>
+</html> 

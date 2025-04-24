@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сокращение энергозатрат при производстве алюминия | Munis Science Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Цветовая схема */
+            --primary: #4361ee;
+            --primary-light: #738bff;
+            --primary-dark: #3a56d4;
+            --secondary: #06d6a0;
+            --accent: #ef476f;
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --error: #ef476f;
+            --info: #118ab2;
+            
+            /* Типографика */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            /* Тени */
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+            
+            /* Скругления */
+            --radius-sm: 0.125rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+            
+            /* Макет */
+            --container-width: 1280px;
+            --header-height: 70px;
+            --content-padding: clamp(1rem, 5vw, 2rem);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--neutral-800);
+            background-color: var(--neutral-50);
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        button, .btn {
+            font-family: var(--font-family);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--content-padding);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            font-size: var(--font-size-base);
+            transition: all 0.2s ease-in-out;
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 2px 10px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(67, 97, 238, 0.05);
+            transform: translateY(-2px);
+            color: var(--primary-dark);
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 1.75rem;
+            font-size: var(--font-size-lg);
+        }
+        
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--neutral-100);
+            color: var(--neutral-700);
+            border: none;
+        }
+        
+        .btn-icon:hover {
+            background: var(--neutral-200);
+            color: var(--primary);
+        }
+        
+        .btn-text {
+            background: transparent;
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            font-weight: 500;
+            border: none;
+            border-radius: var(--radius-sm);
+        }
+        
+        .btn-text:hover {
+            background: rgba(67, 97, 238, 0.05);
+            color: var(--primary-dark);
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Заголовок */
+        .main-header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--neutral-900);
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            width: 120px;
+            height: auto;
+        }
+        
+        .footer-logo-image {
+            margin-bottom: 10px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo-text {
+            background: linear-gradient(135deg, var(--neutral-800), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo .accent {
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .main-nav a {
+            color: var(--neutral-700);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary);
+        }
+        
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: var(--radius-full);
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--neutral-800);
+            border-radius: var(--radius-full);
+            transition: all 0.3s ease;
+        }
+        
+        /* Стили для деталей запроса */
+        .challenge-header {
+            background: linear-gradient(135deg, rgba(239, 71, 111, 0.05), rgba(6, 214, 160, 0.05));
+            padding: 3rem 0 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .challenge-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 800"><g fill="none" stroke="rgba(239, 71, 111, 0.1)" stroke-width="1"><path d="M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63"/><path d="M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764"/><path d="M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880"/><path d="M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382"/><path d="M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-31 229"/></g></svg>');
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .back-link {
+            margin-bottom: 1.5rem;
+        }
+        
+        .back-link a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--neutral-600);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--accent);
+            transform: translateX(-3px);
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .challenge-header-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .challenge-header-main {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .challenge-meta-top {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .challenge-category {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: linear-gradient(135deg, rgba(239, 71, 111, 0.1), rgba(239, 71, 111, 0.2));
+            color: var(--accent);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            border-radius: var(--radius-full);
+        }
+        
+        .challenge-badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: linear-gradient(135deg, rgba(6, 214, 160, 0.1), rgba(6, 214, 160, 0.2));
+            color: var(--success);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            border-radius: var(--radius-full);
+        }
+        
+        .challenge-badge-soon {
+            background: linear-gradient(135deg, rgba(255, 209, 102, 0.1), rgba(255, 209, 102, 0.2));
+            color: var(--warning);
+        }
+        
+        .challenge-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-600);
+            font-size: var(--font-size-sm);
+        }
+        
+        .challenge-title {
+            font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--neutral-800);
+            background: linear-gradient(135deg, var(--neutral-800), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .challenge-meta-company {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background-color: white;
+            padding: 0.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .company-details h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: 0.25rem;
+        }
+        
+        .company-details p {
+            color: var(--neutral-600);
+            font-size: var(--font-size-sm);
+        }
+        
+        .challenge-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-600);
+            font-size: var(--font-size-sm);
+        }
+        
+        .challenge-header-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .challenge-reward-big {
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            border-top: 3px solid var(--success);
+        }
+        
+        .reward-label {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-600);
+            margin-bottom: 0.5rem;
+        }
+        
+        .reward-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--neutral-800);
+            margin-bottom: 0.25rem;
+            background: linear-gradient(135deg, var(--success), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .reward-type {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-600);
+        }
+        
+        .challenge-share {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            align-self: center;
+        }
+        
+        /* Содержимое запроса */
+        .challenge-content {
+            padding: 2rem 0 4rem;
+        }
+        
+        .challenge-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        .content-section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .content-section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .content-section:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .content-section:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        
+        .content-section h2 {
+            font-size: var(--font-size-2xl);
+            margin-bottom: 1.5rem;
+            color: var(--neutral-800);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: var(--radius-full);
+        }
+        
+        .challenge-description p {
+            margin-bottom: 1rem;
+            color: var(--neutral-700);
+        }
+        
+        .challenge-data-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--neutral-100);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .challenge-data-box h3 {
+            margin-bottom: 1rem;
+            font-size: var(--font-size-lg);
+            color: var(--neutral-800);
+        }
+        
+        .challenge-data-box ul {
+            padding-left: 1.2rem;
+        }
+        
+        .challenge-data-box li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Цель запроса */
+        .challenge-goal p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .challenge-goal strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .goal-metrics {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .goal-metric {
+            flex: 1;
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-metric:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-value {
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .metric-label {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-600);
+        }
+        
+        /* Направления поиска решений */
+        .solution-directions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .direction-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .direction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .direction-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            font-size: var(--font-size-xl);
+            flex-shrink: 0;
+        }
+        
+        .direction-content h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: 0.5rem;
+        }
+        
+        .direction-content p {
+            color: var(--neutral-600);
+            font-size: var(--font-size-sm);
+        }
+        
+        /* Требования к решениям */
+        .requirements-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .requirement-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 3px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .requirement-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .requirement-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-800);
+        }
+        
+        .requirement-desc {
+            color: var(--neutral-600);
+            font-size: var(--font-size-sm);
+        }
+        
+        /* IP информация */
+        .ip-info p {
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #fff, var(--neutral-100));
+            border-radius: var(--radius-lg);
+            border-left: 3px solid var(--info);
+        }
+        
+        /* Критерии оценки */
+        .criteria-list {
+            margin-top: 1.5rem;
+        }
+        
+        .criteria-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: white;
+            margin-bottom: 0.75rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease;
+        }
+        
+        .criteria-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .criteria-name {
+            font-weight: 500;
+        }
+        
+        .criteria-weight {
+            font-weight: 600;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Форма отправки предложения */
+        .challenge-response-form-wrapper {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--neutral-700);
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--radius-md);
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            color: var(--neutral-800);
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
+            outline: none;
+        }
+        
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-subtitle {
+            font-size: var(--font-size-lg);
+            margin: 2rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+        
+        .file-upload {
+            position: relative;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .file-upload-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border: 2px dashed var(--neutral-300);
+            border-radius: var(--radius-md);
+            color: var(--neutral-600);
+            transition: all 0.2s ease;
+        }
+        
+        .file-upload-btn:hover {
+            background-color: var(--neutral-100);
+            border-color: var(--primary);
+        }
+        
+        .file-upload-btn i {
+            font-size: var(--font-size-2xl);
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .file-hint {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: var(--font-size-xs);
+            color: var(--neutral-500);
+        }
+        
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+        
+        .checkbox input {
+            margin-top: 0.25rem;
+        }
+        
+        .checkbox span {
+            font-size: var(--font-size-sm);
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        /* Sidebar */
+        .challenge-sidebar {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .sidebar-section h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--neutral-200);
+        }
+        
+        .challenge-info .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--neutral-100);
+        }
+        
+        .info-label {
+            color: var(--neutral-600);
+        }
+        
+        .info-value {
+            font-weight: 500;
+        }
+        
+        .status-open {
+            color: var(--success);
+        }
+        
+        .company-profile {
+            text-align: center;
+        }
+        
+        .company-logo-large {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: var(--radius-md);
+            background-color: white;
+            padding: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .company-profile h4 {
+            font-size: var(--font-size-xl);
+            margin-bottom: 0.5rem;
+        }
+        
+        .company-profile p {
+            margin-bottom: 1.5rem;
+            color: var(--neutral-600);
+            font-size: var(--font-size-sm);
+        }
+        
+        .company-details {
+            text-align: left;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--neutral-700);
+        }
+        
+        .detail-item i {
+            color: var(--primary);
+        }
+        
+        /* Процесс отбора */
+        .selection-process {
+            padding-left: 1rem;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .process-step:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            width: 1px;
+            height: calc(100% - 20px);
+            background-color: var(--neutral-300);
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            font-size: var(--font-size-base);
+            margin-bottom: 0.25rem;
+        }
+        
+        .step-content p {
+            font-size: var(--font-size-sm);
+            color: var(--neutral-600);
+        }
+        
+        /* Контактная информация */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--neutral-700);
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+        }
+        
+        .contact-note {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--neutral-200);
+            font-size: var(--font-size-sm);
+            color: var(--neutral-600);
+            font-style: italic;
+        }
+        
+        /* Похожие запросы */
+        .related-challenges {
+            padding: 3rem 0;
+            background-color: var(--neutral-100);
+        }
+        
+        .section-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .challenges-grid-small {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .challenge-card {
+            background-color: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .challenge-card-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .challenge-org {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .challenge-org img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .challenge-org span {
+            font-size: var(--font-size-xs);
+            color: var(--neutral-600);
+        }
+        
+        .challenge-card .challenge-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: 0.75rem;
+            background: none;
+            -webkit-text-fill-color: var(--neutral-800);
+        }
+        
+        .challenge-card .challenge-desc {
+            color: var(--neutral-600);
+            margin-bottom: 1.5rem;
+            font-size: var(--font-size-sm);
+        }
+        
+        .challenge-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-xs);
+            color: var(--neutral-600);
+            margin-bottom: 1rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .challenge-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .challenge-reward {
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+            color: var(--success);
+        }
+        
+        /* Футер */
+        .main-footer {
+            background-color: var(--neutral-800);
+            color: var(--neutral-300);
+            padding: 4rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-logo p {
+            color: var(--neutral-400);
+            max-width: 300px;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-nav-section h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: var(--font-size-base);
+        }
+        
+        .footer-nav-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-nav-section a {
+            color: var(--neutral-400);
+            transition: color 0.2s ease;
+        }
+        
+        .footer-nav-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--neutral-700);
+            font-size: var(--font-size-sm);
+            color: var(--neutral-500);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--neutral-500);
+        }
+        
+        .footer-links a:hover {
+            color: var(--neutral-300);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .challenge-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .goal-metrics {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .challenge-header-content {
+                flex-direction: column;
+            }
+            
+            .main-nav, .header-actions {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .direction-card {
+                flex-direction: column;
+            }
+            
+            .direction-icon {
+                margin-bottom: 1rem;
+            }
+            
+            .footer-nav {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Мобильное меню
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const headerActions = document.querySelector('.header-actions');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mainNav.classList.toggle('active');
+                    headerActions.classList.toggle('active');
+                });
+            }
+            
+            // Плавная анимация появления секций
+            const sections = document.querySelectorAll('.content-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+            
+            // Прокрутка к форме предложения
+            const submitBtn = document.querySelector('.challenge-header-actions .btn-primary');
+            const formSection = document.querySelector('#challenge-response-form');
+            
+            if (submitBtn && formSection) {
+                submitBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="projects.html">Проекты</a></li>
+                        <li><a href="challenges.html" class="active">Запросы</a></li>
+                        <li><a href="about.html">О платформе</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-outline">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="challenge-header">
+            <div class="container">
+                <div class="back-link">
+                    <a href="challenges.html"><i class="fas fa-arrow-left"></i> Назад к запросам</a>
+                </div>
+                
+                <div class="challenge-header-content">
+                    <div class="challenge-header-main">
+                        <div class="challenge-meta-top">
+                            <span class="challenge-category">Промышленность</span>
+                            <div class="challenge-badge">Открытый запрос</div>
+                            <div class="challenge-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>До 30.06.2024</span>
+                            </div>
+                        </div>
+                        <h1 class="challenge-title">Сокращение энергозатрат при производстве алюминия</h1>
+                        
+                        <div class="challenge-meta-company">
+                            <div class="company-info">
+                                <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="ПромТех" class="company-logo">
+                                <div class="company-details">
+                                    <h3>ПромТех</h3>
+                                    <p>Крупный производитель алюминиевой продукции</p>
+                                </div>
+                            </div>
+                            <div class="challenge-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Узбекистан, Ташкент</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-header-actions">
+                        <div class="challenge-reward-big">
+                            <div class="reward-label">Вознаграждение</div>
+                            <div class="reward-value">5 000 000 UZS</div>
+                            <div class="reward-type">Грант на разработку решения</div>
+                        </div>
+                        <button class="btn btn-primary btn-lg">Предложить решение</button>
+                        <div class="challenge-share">
+                            <button class="btn btn-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <button class="btn btn-icon">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="challenge-content">
+            <div class="container">
+                <div class="challenge-layout">
+                    <div class="challenge-main">
+                        <div class="content-section">
+                            <h2>Описание проблемы</h2>
+                            <div class="challenge-description">
+                                <p>Производство алюминия методом электролиза является энергоемким процессом, который потребляет значительные объемы электроэнергии. В настоящее время на производство 1 тонны алюминия затрачивается в среднем 13,500-15,000 кВт·ч электроэнергии, что составляет примерно 30-40% от общей себестоимости продукции.</p>
+                                
+                                <p>В условиях растущих цен на электроэнергию и усиливающейся конкуренции на мировом рынке алюминия, снижение энергозатрат становится приоритетной задачей для сохранения конкурентоспособности производства.</p>
+                                
+                                <p>Несмотря на постепенное совершенствование технологии, существует значительный потенциал для дальнейшего снижения энергопотребления при производстве алюминия.</p>
+                                
+                                <div class="challenge-data-box">
+                                    <h3>Текущие показатели:</h3>
+                                    <ul>
+                                        <li>Среднее энергопотребление: 13,800 кВт·ч/т алюминия</li>
+                                        <li>Производительность электролизера: 2,500 кг Al/сутки</li>
+                                        <li>Текущий выход по току: 92-93%</li>
+                                        <li>Срок службы электролизера: 5-6 лет</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h2>Цель запроса</h2>
+                            <div class="challenge-goal">
+                                <p>Мы ищем инновационные технологические решения, которые позволят снизить энергозатраты при производстве алюминия методом электролиза на <strong>15-20%</strong> без существенного снижения качества получаемого металла и производительности электролизеров.</p>
+                                
+                                <div class="goal-metrics">
+                                    <div class="goal-metric">
+                                        <div class="metric-value">-20%</div>
+                                        <div class="metric-label">Снижение энергопотребления</div>
+                                    </div>
+                                    <div class="goal-metric">
+                                        <div class="metric-value">≥ 99.7%</div>
+                                        <div class="metric-label">Чистота алюминия</div>
+                                    </div>
+                                    <div class="goal-metric">
+                                        <div class="metric-value">≥ 95%</div>
+                                        <div class="metric-label">Выход по току</div>
+                                    </div>
+                                </div>
+                                
+                                <p>Предлагаемые решения должны быть реализуемы в существующих производственных условиях с минимальными изменениями основного оборудования.</p>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h2>Возможные направления поиска решений</h2>
+                            <div class="solution-directions">
+                                <div class="direction-card">
+                                    <div class="direction-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="direction-content">
+                                        <h3>Оптимизация процесса электролиза</h3>
+                                        <p>Совершенствование конструкции электролизеров, оптимизация режимов работы, разработка новых методов контроля процесса</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="direction-card">
+                                    <div class="direction-icon">
+                                        <i class="fas fa-flask"></i>
+                                    </div>
+                                    <div class="direction-content">
+                                        <h3>Модификация состава электролита</h3>
+                                        <p>Разработка новых композиций электролита с пониженным электрическим сопротивлением и улучшенными технологическими свойствами</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="direction-card">
+                                    <div class="direction-icon">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <div class="direction-content">
+                                        <h3>Применение интеллектуальных систем управления</h3>
+                                        <p>Внедрение систем предиктивной аналитики и ИИ для оптимизации параметров процесса в режиме реального времени</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="direction-card">
+                                    <div class="direction-icon">
+                                        <i class="fas fa-atom"></i>
+                                    </div>
+                                    <div class="direction-content">
+                                        <h3>Новые материалы для электродов</h3>
+                                        <p>Разработка материалов с улучшенной электропроводностью и устойчивостью к коррозии</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h2>Требования к предлагаемым решениям</h2>
+                            <div class="solution-requirements">
+                                <div class="requirements-list">
+                                    <div class="requirement-item">
+                                        <div class="requirement-label">Техническая обоснованность</div>
+                                        <div class="requirement-desc">Решение должно базироваться на проверенных научных принципах и иметь теоретическое обоснование</div>
+                                    </div>
+                                    
+                                    <div class="requirement-item">
+                                        <div class="requirement-label">Экономическая эффективность</div>
+                                        <div class="requirement-desc">Срок окупаемости предлагаемого решения должен составлять не более 3-х лет при текущих ценах на электроэнергию</div>
+                                    </div>
+                                    
+                                    <div class="requirement-item">
+                                        <div class="requirement-label">Технологическая совместимость</div>
+                                        <div class="requirement-desc">Возможность интеграции с существующими производственными процессами без капитальной реконструкции</div>
+                                    </div>
+                                    
+                                    <div class="requirement-item">
+                                        <div class="requirement-label">Экологическая безопасность</div>
+                                        <div class="requirement-desc">Соответствие действующим и перспективным требованиям по охране окружающей среды</div>
+                                    </div>
+                                    
+                                    <div class="requirement-item">
+                                        <div class="requirement-label">Масштабируемость</div>
+                                        <div class="requirement-desc">Возможность масштабирования решения до промышленных объемов производства</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h2>Конфиденциальность и интеллектуальная собственность</h2>
+                            <div class="ip-info">
+                                <p>Компания "ПромТех" гарантирует конфиденциальность полученных предложений и обязуется не использовать представленные идеи без согласования с авторами. Права на интеллектуальную собственность, созданную в ходе совместной работы над решением, будут распределяться в соответствии с отдельно заключаемым соглашением.</p>
+                                
+                                <p>При размещении предложения необходимо указать статус интеллектуальной собственности и имеющиеся патенты и/или заявки на изобретения, если таковые имеются.</p>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h2>Критерии оценки предложений</h2>
+                            <div class="evaluation-criteria">
+                                <div class="criteria-list">
+                                    <div class="criteria-item">
+                                        <div class="criteria-name">Потенциал снижения энергозатрат</div>
+                                        <div class="criteria-weight">30%</div>
+                                    </div>
+                                    <div class="criteria-item">
+                                        <div class="criteria-name">Техническая обоснованность</div>
+                                        <div class="criteria-weight">25%</div>
+                                    </div>
+                                    <div class="criteria-item">
+                                        <div class="criteria-name">Экономическая эффективность</div>
+                                        <div class="criteria-weight">20%</div>
+                                    </div>
+                                    <div class="criteria-item">
+                                        <div class="criteria-name">Простота внедрения</div>
+                                        <div class="criteria-weight">15%</div>
+                                    </div>
+                                    <div class="criteria-item">
+                                        <div class="criteria-name">Инновационность решения</div>
+                                        <div class="criteria-weight">10%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-section">
+                            <h2>Предложить решение</h2>
+                            <div class="challenge-response-form-wrapper">
+                                <form id="challenge-response-form" class="challenge-response-form">
+                                    <div class="form-group">
+                                        <label for="solution-title">Название решения</label>
+                                        <input type="text" id="solution-title" class="form-input" placeholder="Кратко опишите предлагаемое решение" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="solution-desc">Описание решения</label>
+                                        <textarea id="solution-desc" rows="6" class="form-input" placeholder="Опишите детально ваше решение, включая технические аспекты и предполагаемую эффективность" required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="trl-level">Уровень готовности (TRL)</label>
+                                            <select id="trl-level" class="form-select" required>
+                                                <option value="">Выберите уровень TRL</option>
+                                                <option value="1">TRL 1 - Основные принципы</option>
+                                                <option value="2">TRL 2 - Концепция технологии</option>
+                                                <option value="3">TRL 3 - Экспериментальное подтверждение</option>
+                                                <option value="4">TRL 4 - Технология в лаборатории</option>
+                                                <option value="5">TRL 5 - Технология в релевантной среде</option>
+                                                <option value="6">TRL 6 - Прототип системы</option>
+                                                <option value="7">TRL 7 - Прототип в рабочей среде</option>
+                                                <option value="8">TRL 8 - Реальная система завершена</option>
+                                                <option value="9">TRL 9 - Система испытана в рабочей среде</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="implementation-time">Срок внедрения</label>
+                                            <select id="implementation-time" class="form-select" required>
+                                                <option value="">Выберите срок</option>
+                                                <option value="0-6">До 6 месяцев</option>
+                                                <option value="6-12">6-12 месяцев</option>
+                                                <option value="12-18">12-18 месяцев</option>
+                                                <option value="18-24">18-24 месяца</option>
+                                                <option value="24+">Более 2 лет</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="solution-docs">Дополнительные материалы</label>
+                                        <div class="file-upload">
+                                            <input type="file" id="solution-docs" multiple>
+                                            <div class="file-upload-btn">
+                                                <i class="fas fa-upload"></i> Загрузить файлы
+                                                <span class="file-hint">(PDF, DOC, PPT, до 10 МБ)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="solution-ip">Статус интеллектуальной собственности</label>
+                                        <select id="solution-ip" class="form-select" required>
+                                            <option value="">Выберите статус</option>
+                                            <option value="new">Новая разработка без оформленной ИС</option>
+                                            <option value="patent-pending">Подана заявка на патент</option>
+                                            <option value="patented">Запатентовано</option>
+                                            <option value="know-how">Охраняется как ноу-хау</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <h3 class="form-subtitle">Контактная информация</h3>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-name">Имя</label>
+                                            <input type="text" id="contact-name" class="form-input" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="contact-org">Организация</label>
+                                            <input type="text" id="contact-org" class="form-input" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="contact-email">Email</label>
+                                            <input type="email" id="contact-email" class="form-input" required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="contact-phone">Телефон</label>
+                                            <input type="tel" id="contact-phone" class="form-input" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="checkbox">
+                                            <input type="checkbox" required>
+                                            <span>Я согласен с <a href="#" target="_blank">условиями обработки данных</a> и <a href="#" target="_blank">правилами платформы</a></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary btn-lg">Отправить предложение</button>
+                                        <button type="button" class="btn btn-outline btn-lg">Сохранить черновик</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <aside class="challenge-sidebar">
+                        <div class="sidebar-section">
+                            <h3>Информация о запросе</h3>
+                            <div class="challenge-info">
+                                <div class="info-item">
+                                    <span class="info-label">Дата публикации:</span>
+                                    <span class="info-value">15.03.2024</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Срок подачи предложений:</span>
+                                    <span class="info-value">30.06.2024</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Статус:</span>
+                                    <span class="info-value status-open">Открыт</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Тип запроса:</span>
+                                    <span class="info-value">Повышение эффективности</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Вознаграждение:</span>
+                                    <span class="info-value">5 000 000 UZS</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Получено предложений:</span>
+                                    <span class="info-value">12</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-section">
+                            <h3>О компании</h3>
+                            <div class="company-profile">
+                                <div class="company-logo-large">
+                                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="ПромТех">
+                                </div>
+                                <h4>ПромТех</h4>
+                                <p>ПромТех — один из крупнейших производителей алюминиевой продукции в России с производственными мощностями в Сибири и на Урале. Компания стремится к непрерывному совершенствованию технологий и повышению энергоэффективности производства.</p>
+                                <div class="company-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-globe"></i>
+                                        <a href="#" target="_blank">promtech.ru</a>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Узбекистан, Навои</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-industry"></i>
+                                        <span>Металлургия, Промышленность</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-section">
+                            <h3>Процесс отбора</h3>
+                            <div class="selection-process">
+                                <div class="process-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Приём предложений</h4>
+                                        <p>Открытый сбор предложений на платформе до 30.06.2024</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Экспертная оценка</h4>
+                                        <p>Оценка предложений экспертами компании (30 дней)</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Онлайн-питчи финалистов</h4>
+                                        <p>10 лучших предложений будут приглашены для презентации</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Объявление победителя</h4>
+                                        <p>Выбор победителя и подписание соглашения</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar-section">
+                            <h3>Контактная информация</h3>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-user"></i>
+                                    <span>Акмаль Рахматов Илхомович, руководитель направления инноваций</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:innovations@promtech.ru">innovations@promtech.ru</a>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+                                </div>
+                                <p class="contact-note">Пожалуйста, указывайте в теме письма номер запроса: CH-2024-05</p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        
+        <section class="related-challenges">
+            <div class="container">
+                <h2 class="section-title">Похожие запросы</h2>
+                <div class="challenges-grid challenges-grid-small">
+                    <!-- Related Challenge 1 -->
+                    <div class="challenge-card">
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Энергетика</span>
+                            <div class="challenge-org">
+                                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Логотип компании">
+                                <span>ЭнергоСеть</span>
+                            </div>
+                        </div>
+                        <div class="challenge-badge">Открыт</div>
+                        <h3 class="challenge-title">Прогнозирование нагрузки в энергосети с высокой точностью</h3>
+                        <p class="challenge-desc">Разработка алгоритмов машинного обучения для краткосрочного прогнозирования нагрузки в электросети</p>
+                        <div class="challenge-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Россия, Москва</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>До 10.07.2024</span>
+                            </div>
+                        </div>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">Грант: 3 млн ₽ + внедрение</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Challenge 2 -->
+                    <div class="challenge-card">
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Промышленность</span>
+                            <div class="challenge-org">
+                                <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Логотип компании">
+                                <span>МеталлПром</span>
+                            </div>
+                        </div>
+                        <div class="challenge-badge">Открыт</div>
+                        <h3 class="challenge-title">Оптимизация потребления водных ресурсов в металлургии</h3>
+                        <p class="challenge-desc">Поиск технологий для сокращения расхода воды при сохранении качества обработки металла</p>
+                        <div class="challenge-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Узбекистан, Ташкент</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>До 25.08.2024</span>
+                            </div>
+                        </div>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">Грант: 4 млн UZS</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Challenge 3 -->
+                    <div class="challenge-card">
+                        <div class="challenge-card-header">
+                            <span class="challenge-category">Экология</span>
+                            <div class="challenge-org">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Логотип компании">
+                                <span>ЭкоТех</span>
+                            </div>
+                        </div>
+                        <div class="challenge-badge challenge-badge-soon">Скоро закрывается</div>
+                        <h3 class="challenge-title">Утилизация выбросов CO2 на промышленных предприятиях</h3>
+                        <p class="challenge-desc">Технология улавливания и полезного использования углекислого газа от промышленных объектов</p>
+                        <div class="challenge-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Узбекистан, Самарканд</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>До 20.05.2024</span>
+                            </div>
+                        </div>
+                        <div class="challenge-footer">
+                            <span class="challenge-reward">Грант: 7 млн UZS + внедрение</span>
+                            <a href="challenge-details.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image footer-logo-image">
+                    <p>Объединяем науку и бизнес для создания технологий будущего</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-section">
+                        <h4>Платформа</h4>
+                        <ul>
+                            <li><a href="projects.html">Проекты</a></li>
+                            <li><a href="challenges.html">Запросы</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="help.html">Помощь</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Для пользователей</h4>
+                        <ul>
+                            <li><a href="for-scientists.html">Ученым</a></li>
+                            <li><a href="for-investors.html">Инвесторам</a></li>
+                            <li><a href="for-business.html">Бизнесу</a></li>
+                            <li><a href="for-government.html">Госорганам</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Контакты</h4>
+                        <ul>
+                            <li><a href="mailto:info@scitechhub.uz">info@scitechhub.uz</a></li>
+                            <li><a href="tel:+998712345678">+998 (71) 234-56-78</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2023 Munis Science Hub. Все права защищены.</span>
+                <div class="footer-links">
+                    <a href="terms.html">Условия использования</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
