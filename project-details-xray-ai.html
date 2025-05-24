@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Twin Based Education Platform for STEM | Munis Science Hub</title>
+    <title>X-Ray AI Expert | Munis Science Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -41,13 +41,11 @@
             --font-size-4xl: 2.25rem;
             --font-size-5xl: 3rem;
             
-            /* Тени */
             --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.1);
             --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
             --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
             
-            /* Скругления */
             --radius-sm: 0.125rem;
             --radius-md: 0.375rem;
             --radius-lg: 0.5rem;
@@ -55,7 +53,6 @@
             --radius-2xl: 1rem;
             --radius-full: 9999px;
             
-            /* Макет */
             --container-width: 1280px;
             --header-height: 70px;
             --content-padding: clamp(1rem, 5vw, 2rem);
@@ -258,7 +255,7 @@
 
         /* Project Header */
         .project-header {
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(6, 214, 160, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(67, 97, 238, 0.05) 100%);
             padding: 2rem 0 3rem;
             position: relative;
             overflow: hidden;
@@ -271,7 +268,7 @@
             right: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
         }
         
@@ -307,8 +304,8 @@
         }
         
         .project-category {
-            background-color: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
+            background-color: rgba(220, 38, 38, 0.1);
+            color: var(--medical);
             padding: 0.375rem 0.875rem;
             border-radius: var(--radius-full);
             font-size: var(--font-size-sm);
@@ -346,7 +343,7 @@
         }
         
         .meta-item i {
-            color: var(--primary);
+            color: var(--medical);
             width: 16px;
         }
         
@@ -406,7 +403,7 @@
         }
         
         .progress-stage.active .stage-icon {
-            background: var(--primary);
+            background: var(--medical);
             color: white;
             animation: pulse 2s infinite;
         }
@@ -427,7 +424,7 @@
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--success) 0%, var(--primary) 100%);
+            background: linear-gradient(90deg, var(--success) 0%, var(--medical) 100%);
             border-radius: var(--radius-full);
             transition: width 0.5s ease;
         }
@@ -505,8 +502,8 @@
         }
 
         .solution-box {
-            background: rgba(6, 214, 160, 0.05);
-            border-left: 4px solid var(--success);
+            background: rgba(220, 38, 38, 0.05);
+            border-left: 4px solid var(--medical);
         }
 
         .info-grid {
@@ -525,7 +522,20 @@
 
         .info-item h4 {
             margin-bottom: 0.5rem;
-            color: var(--primary);
+            color: var(--medical);
+        }
+
+        .accuracy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(46, 196, 182, 0.1);
+            color: var(--success);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            margin-top: 0.5rem;
         }
 
         /* Sidebar */
@@ -586,7 +596,7 @@
         }
         
         .contact-item i {
-            color: var(--primary);
+            color: var(--medical);
             width: 16px;
         }
 
@@ -639,27 +649,26 @@
     </style>
 </head>
 <body>
-    <script>
-        function checkPassword() {
-            if (localStorage.getItem("passwordEntered") === "true") {
-                return true;
-            }
-            var password = prompt("Введите пароль для доступа к сайту:", "");
-            if (password === "1234554321") {
-                localStorage.setItem("passwordEntered", "true");
-                return true;
-            } else {
-                alert("Неверный пароль!");
-                localStorage.removeItem("passwordEntered");
-                document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
-                return false;
-            }
+<script>
+    function checkPassword() {
+        if (localStorage.getItem("passwordEntered") === "true") {
+            return true;
         }
-        if (!checkPassword()) {
-            // Дополнительная логика, если пароль не был введен или неверен
+        var password = prompt("Введите пароль для доступа к сайту:", "");
+        if (password === "1234554321") {
+            localStorage.setItem("passwordEntered", "true");
+            return true;
+        } else {
+            alert("Неверный пароль!");
+            localStorage.removeItem("passwordEntered");
+            document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
+            return false;
         }
-    </script>
-
+    }
+    if (!checkPassword()) {
+        // Дополнительная логика, если пароль не был введен или неверен
+    }
+</script>
     <header class="main-header">
         <div class="container">
             <div class="header-content">
@@ -692,23 +701,23 @@
                 <div class="project-header-content">
                     <div class="project-header-main">
                         <div class="project-categories">
-                            <span class="project-category">Образование</span>
-                            <span class="project-budget">$148.329</span>
+                            <span class="project-category">Медицина</span>
+                            <span class="project-budget">$173.000</span>
                         </div>
-                        <h1 class="project-title">RCP-01/1 Digital Twin Based Education Platform for STEM</h1>
+                        <h1 class="project-title">RCP-01/6 AI для скрининговых рентгенологических исследований</h1>
                         
                         <div class="project-meta-large">
                             <div class="meta-item">
                                 <i class="fas fa-building"></i>
-                                <span>OOO «Raqamli Innovatsion Sanoat Texnologiyalari»</span>
+                                <span>ООО «X-Ray AI Expert»</span>
                             </div>
                             <div class="meta-item">
                                 <i class="fas fa-user"></i>
-                                <span>Руководитель: Жасурхужа Холхужаев</span>
+                                <span>Руководитель: Атаджан Каримович Хамраев</span>
                             </div>
                             <div class="meta-item">
                                 <i class="fas fa-handshake"></i>
-                                <span>Партнер: Туринский политехнический университет в Ташкенте</span>
+                                <span>Партнер: ООО «Intervention Team»</span>
                             </div>
                         </div>
                     </div>
@@ -741,17 +750,17 @@
                             </div>
                             <span>Разработка</span>
                         </div>
-                        <div class="progress-stage active">
+                        <div class="progress-stage completed">
                             <div class="stage-icon">
                                 <i class="fas fa-vial"></i>
                             </div>
                             <span>Тестирование</span>
                         </div>
-                        <div class="progress-stage">
+                        <div class="progress-stage active">
                             <div class="stage-icon">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-rocket"></i>
                             </div>
-                            <span>Коммерциализация</span>
+                            <span>Запуск</span>
                         </div>
                         <div class="progress-stage">
                             <div class="stage-icon">
@@ -761,7 +770,7 @@
                         </div>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%"></div>
+                        <div class="progress-fill" style="width: 90%"></div>
                     </div>
                 </div>
             </div>
@@ -773,25 +782,31 @@
                     <div class="project-main">
                         <div class="content-section">
                             <h2>О проекте</h2>
-                            <img src="img/projects/RCP 01-1.png" alt="Digital Twin Based Education Platform" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
-                            <p>Платформа обучения STEM на основе технологии цифровых двойников представляет собой инновационное решение для дистанционного обучения промышленным процессам через облачные технологии с возможностью удалённого управления реальным оборудованием.</p>
+                            <img src="img/projects/RCP 01-6.png" alt="X-Ray AI Expert" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
+                            
+                            <p>Веб-приложение на основе ИИ для предварительного анализа рентгенологических изображений грудной клетки, особенно для выявления туберкулёза и других заболеваний органов дыхания.</p>
+                            
+                            <div class="accuracy-badge">
+                                <i class="fas fa-medal"></i>
+                                <span>Точность выше 90% ROC AUC</span>
+                            </div>
                             
                             <div class="info-grid">
                                 <div class="info-item">
                                     <h4>Организация-грантополучатель</h4>
-                                    <p>OOO «Raqamli Innovatsion Sanoat Texnologiyalari»</p>
+                                    <p>ООО «X-Ray AI Expert»</p>
                                 </div>
                                 <div class="info-item">
                                     <h4>Официальное название</h4>
-                                    <p>Платформа обучения STEM на основе технологии цифровых двойников</p>
+                                    <p>Использование технологии искусственного интеллекта для скрининговых рентгенологических исследований</p>
                                 </div>
                                 <div class="info-item">
                                     <h4>Код проекта</h4>
-                                    <p>RCP-01/1</p>
+                                    <p>RCP-01/6</p>
                                 </div>
                                 <div class="info-item">
-                                    <h4>Руководитель проекта</h4>
-                                    <p>Жасурхужа Холхужаев</p>
+                                    <h4>Веб-портал</h4>
+                                    <p>X-RayAI.uz</p>
                                 </div>
                             </div>
                         </div>
@@ -802,29 +817,37 @@
                                 <div class="problem-box">
                                     <h3>Решаемые проблемы</h3>
                                     <ul>
-                                        <li>Высокие затраты на создание лабораторий в учебных заведениях</li>
-                                        <li>Низкая доступность практического обучения для студентов</li>
-                                        <li>Отставание образовательной инфраструктуры от требований индустрии 4.0</li>
+                                        <li>Нехватка квалифицированных радиологов для обработки большого количества рентгеновских снимков</li>
+                                        <li>Высокая стоимость двойной верификации снимков специалистами</li>
+                                        <li>Необходимость повышения точности диагностики и снижения времени обработки снимков</li>
                                     </ul>
                                 </div>
                                 <div class="solution-box">
                                     <h3>Цель проекта</h3>
-                                    <p>Создание образовательной платформы, использующей цифровых двойников для дистанционного обучения STEM-дисциплинам и управления физическими роботизированными системами.</p>
+                                    <p>Разработка веб-приложения на основе искусственного интеллекта для предварительного анализа рентгенологических изображений грудной клетки, особенно для выявления туберкулёза и других заболеваний органов дыхания.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="content-section">
                             <h2>Технологическое решение</h2>
-                            <p>Доступное обучение промышленным процессам для учреждений среднего специального, профессионального и высшего образования через облачные технологии.</p>
+                            <p>Комплексная ИИ-система для медицинской диагностики:</p>
                             
-                            <h3>Ключевые особенности:</h3>
+                            <h3>Ключевые компоненты:</h3>
                             <ul>
-                                <li>Цифровые двойники промышленного оборудования</li>
-                                <li>Удалённое управление реальными системами</li>
-                                <li>Облачная инфраструктура для доступа</li>
-                                <li>Интерактивные 3D-модели лабораторных установок</li>
-                                <li>Образовательные курсы и методические материалы</li>
+                                <li>ИИ-модель для первичного анализа снимков, обеспечивающая "второе мнение" врачу</li>
+                                <li>Веб-платформа и мобильные приложения для доступа к ИИ-анализу</li>
+                                <li>Интеграция с медицинскими учреждениями для массового использования</li>
+                                <li>Система отчетности и аналитики для врачей</li>
+                                <li>Безопасное хранение и обработка медицинских данных</li>
+                            </ul>
+                            
+                            <h3>Технические характеристики:</h3>
+                            <ul>
+                                <li>Точность модели: выше 90% ROC AUC</li>
+                                <li>Специализация на туберкулёзе и заболеваниях органов дыхания</li>
+                                <li>Быстрый анализ: результат за секунды</li>
+                                <li>Поддержка различных форматов рентгеновских изображений</li>
                             </ul>
                         </div>
 
@@ -832,16 +855,16 @@
                             <h2>Текущий статус проекта</h2>
                             <div class="info-grid">
                                 <div class="info-item">
-                                    <h4>Прототип готов</h4>
-                                    <p>Создан прототип цифрового двойника с возможностью удалённого управления реальным оборудованием</p>
+                                    <h4>4 модели ИИ готовы</h4>
+                                    <p>Разработаны и протестированы четыре модели ИИ с точностью выше 90% ROC AUC</p>
                                 </div>
                                 <div class="info-item">
-                                    <h4>Образовательный контент</h4>
-                                    <p>Разработан учебный курс и 3D-модели лабораторных установок</p>
+                                    <h4>Веб-портал запущен</h4>
+                                    <p>Создан веб-портал X-RayAI.uz и начата разработка мобильных приложений</p>
                                 </div>
                                 <div class="info-item">
-                                    <h4>Анализ рынка</h4>
-                                    <p>Проведены тестирования платформы с 13 компаниями для анализа требований рынка</p>
+                                    <h4>Партнерства установлены</h4>
+                                    <p>Заключены меморандумы с медицинскими объединениями для внедрения платформы</p>
                                 </div>
                             </div>
                         </div>
@@ -849,18 +872,27 @@
                         <div class="content-section">
                             <h2>Планы по развитию</h2>
                             
-                            <h3>Исследования и доработки</h3>
-                            <p>Расширение функционала платформы за счёт улучшения цифрового двойника и интеграции новых промышленных сценариев.</p>
-                            
                             <h3>Коммерциализация</h3>
                             <ul>
-                                <li>Продажа образовательных услуг</li>
-                                <li>Лицензирование платформы</li>
-                                <li>Ориентация фокуса на индустриальные предприятия для повышения масштаба проекта</li>
+                                <li>Продажа услуги анализа рентгеновских снимков медицинским учреждениям ($10 за 100 снимков)</li>
+                                <li>Подписочная модель для постоянных клиентов</li>
+                                <li>Интеграция в государственные программы через механизм ГЧП</li>
+                                <li>Расширение на региональные рынки</li>
                             </ul>
                             
-                            <h3>Ожидаемые результаты</h3>
-                            <p>Охват адресного рынка на уровне 5% или 2 млн долларов США.</p>
+                            <h3>Исследования и доработки</h3>
+                            <ul>
+                                <li>Оптимизация ИИ-моделей для других типов медицинских изображений</li>
+                                <li>Разработка мобильных приложений для врачей</li>
+                                <li>Интеграция с существующими медицинскими информационными системами</li>
+                            </ul>
+                            
+                            <h3>Цели масштабирования</h3>
+                            <ul>
+                                <li>Выход на доход порядка $100,000 в первый год коммерциализации</li>
+                                <li>Масштабирование до 1 млн анализируемых снимков в год</li>
+                                <li>Внедрение в 50+ медицинских учреждений</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -869,33 +901,39 @@
                             <h3>Бюджет проекта</h3>
                             <div class="financial-item">
                                 <span class="financial-label">Общий бюджет</span>
-                                <span class="financial-value">$148.329</span>
+                                <span class="financial-value">$173,000</span>
                             </div>
                             <div class="financial-item">
                                 <span class="financial-label">Сумма гранта</span>
-                                <span class="financial-value">$122.990</span>
+                                <span class="financial-value">$150,000</span>
                             </div>
                             <div class="financial-item">
                                 <span class="financial-label">Со-финансирование</span>
-                                <span class="financial-value">$25.339</span>
+                                <span class="financial-value">$23,000</span>
                             </div>
                             <div class="financial-item">
-                                <span class="financial-label">Доля со-финансирования</span>
-                                <span class="financial-value">20.6%</span>
+                                <span class="financial-label">Частный партнёр</span>
+                                <span class="financial-value">ООО «Intervention Team»</span>
                             </div>
                         </div>
 
                         <div class="sidebar-section">
-                            <h3>Инвесторы и партнёры</h3>
-                            <div class="contact-info">
-                                <div class="contact-item">
-                                    <i class="fas fa-university"></i>
-                                    <span>Туринский политехнический университет в Ташкенте</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="fas fa-globe"></i>
-                                    <span>Программа MUNIS</span>
-                                </div>
+                            <h3>Ключевые метрики</h3>
+                            <div class="financial-item">
+                                <span class="financial-label">Точность ИИ</span>
+                                <span class="financial-value">>90% ROC AUC</span>
+                            </div>
+                            <div class="financial-item">
+                                <span class="financial-label">Моделей разработано</span>
+                                <span class="financial-value">4</span>
+                            </div>
+                            <div class="financial-item">
+                                <span class="financial-label">Цена анализа</span>
+                                <span class="financial-value">$10/100 снимков</span>
+                            </div>
+                            <div class="financial-item">
+                                <span class="financial-label">Целевой доход Y1</span>
+                                <span class="financial-value">$100K</span>
                             </div>
                         </div>
 
@@ -904,32 +942,38 @@
                             <div class="contact-info">
                                 <div class="contact-item">
                                     <i class="fas fa-user"></i>
-                                    <span>Жасурхужа Холхужаев</span>
+                                    <span>Атаджан Каримович Хамраев</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-building"></i>
-                                    <span>OOO «Raqamli Innovatsion Sanoat Texnologiyalari»</span>
+                                    <span>ООО «X-Ray AI Expert»</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span>X-RayAI.uz</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-envelope"></i>
-                                    <span>info@digitaltwinedu.uz</span>
+                                    <span>info@x-rayai.uz</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="sidebar-section">
-                            <h3>Ключевые метрики</h3>
-                            <div class="financial-item">
-                                <span class="financial-label">Целевой рынок</span>
-                                <span class="financial-value">$2M</span>
-                            </div>
-                            <div class="financial-item">
-                                <span class="financial-label">Доля рынка</span>
-                                <span class="financial-value">5%</span>
-                            </div>
-                            <div class="financial-item">
-                                <span class="financial-label">Партнеров протестировано</span>
-                                <span class="financial-value">13</span>
+                            <h3>Сертификации и партнерства</h3>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Меморандумы с медицинскими объединениями</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Соответствие медицинским стандартам</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Мобильные приложения в разработке</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -952,20 +996,6 @@
             const header = document.querySelector('.main-header');
             header.classList.toggle('sticky', window.scrollY > 10);
         });
-
-        // Gallery functionality (if needed)
-        const thumbs = document.querySelectorAll('.thumb');
-        const mainImage = document.querySelector('.main-image');
-        
-        thumbs.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                thumbs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                if (mainImage) {
-                    mainImage.src = this.src.replace('w=150', 'w=800');
-                }
-            });
-        });
     </script>
 </body>
-</html> 
+</html>

@@ -935,6 +935,31 @@
     </style>
 </head>
 <body>
+<script>
+    function checkPassword() {
+        if (localStorage.getItem("passwordEntered") === "true") {
+            return true;
+        }
+        // Предполагается, что здесь должна быть логика запроса пароля,
+        // но она была обрезана или удалена в предыдущих изменениях.
+        // Оставляю заглушку, чтобы избежать ошибки синтаксиса.
+        // Если у вас есть полный код этой функции, пожалуйста, предоставьте его.
+        // var password = prompt("Введите пароль для доступа к сайту:", "");
+        // if (password === "YOUR_PASSWORD_HERE") { // Замените YOUR_PASSWORD_HERE на реальный пароль
+        //     localStorage.setItem("passwordEntered", "true");
+        //     return true;
+        // } else {
+        //     alert("Неверный пароль!");
+        //     localStorage.removeItem("passwordEntered");
+        //     document.body.innerHTML = "<h1 style=\\"text-align:center; margin-top: 50px;\\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
+        //     return false;
+        // }
+    }
+    // Вызов функции проверки пароля, если это необходимо при загрузке страницы
+    // if (!checkPassword()) {
+    //     // Дополнительная логика, если пароль не был введен или неверен
+    // }
+</script>
     <header class="main-header">
         <div class="container">
             <div class="header-content">
@@ -946,6 +971,7 @@
                         <li><a href="projects.html">Проекты</a></li>
                         <li><a href="challenges.html">Запросы</a></li>
                         <li><a href="about.html">О платформе</a></li>
+                        <li><a href="munis-about.html">О проекте MUNIS</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -1019,6 +1045,44 @@
                     <!-- Project Card 1 -->
                     <div class="project-card">
                         <div class="project-card-header">
+                            <span class="project-category">Медицина</span>
+                            <span class="project-trl">TRL 8</span>
+                        </div>
+                        <h3 class="project-title">X-Ray AI Expert: RCP-01/6</h3>
+                        <p class="project-desc">ИИ для скрининговых рентгенологических исследований, выявление туберкулёза. Точность &gt;90% ROC AUC.</p>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 90%"></div>
+                                </div>
+                                <span class="stage-label">Запуск</span>
+                            </div>
+                            <a href="project-details-xray-ai.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 2 -->
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <span class="project-category">AI/ML</span>
+                            <span class="project-trl">TRL 5</span>
+                        </div>
+                        <h3 class="project-title">JobBro - AI платформа поиска клиентов: RCP-01/5</h3>
+                        <p class="project-desc">ИИ платформа для аутсорс-агентств и фрилансеров. Автоматическая генерация AI-контента для откликов.</p>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 80%"></div>
+                                </div>
+                                <span class="stage-label">Тестирование с клиентами</span>
+                            </div>
+                            <a href="project-details-jobbro.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 3 -->
+                    <div class="project-card">
+                        <div class="project-card-header">
                             <span class="project-category">Биотехнологии</span>
                             <span class="project-trl">TRL 6</span>
                         </div>
@@ -1030,44 +1094,6 @@
                                     <div class="stage-progress" style="width: 65%"></div>
                                 </div>
                                 <span class="stage-label">Пилотное внедрение</span>
-                            </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card 2 -->
-                    <div class="project-card">
-                        <div class="project-card-header">
-                            <span class="project-category">Энергетика</span>
-                            <span class="project-trl">TRL 4</span>
-                        </div>
-                        <h3 class="project-title">Высокоэффективные перовскитные солнечные элементы</h3>
-                        <p class="project-desc">Технология изготовления солнечных панелей нового поколения с КПД выше 30%</p>
-                        <div class="project-footer">
-                            <div class="project-stage">
-                                <div class="stage-bar">
-                                    <div class="stage-progress" style="width: 40%"></div>
-                                </div>
-                                <span class="stage-label">Лабораторные испытания</span>
-                            </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card 3 -->
-                    <div class="project-card">
-                        <div class="project-card-header">
-                            <span class="project-category">Медицина</span>
-                            <span class="project-trl">TRL 7</span>
-                        </div>
-                        <h3 class="project-title">Экспресс-тест для диагностики инфекционных заболеваний</h3>
-                        <p class="project-desc">Портативная система для быстрой диагностики инфекций по образцу биоматериала</p>
-                        <div class="project-footer">
-                            <div class="project-stage">
-                                <div class="stage-bar">
-                                    <div class="stage-progress" style="width: 75%"></div>
-                                </div>
-                                <span class="stage-label">Клинические испытания</span>
                             </div>
                             <a href="project-details.html" class="btn btn-text">Подробнее</a>
                         </div>
@@ -1088,7 +1114,7 @@
                         <div class="challenge-card-header">
                             <span class="challenge-category">Промышленность</span>
                             <div class="challenge-org">
-                                <img src="img/company-logo1.svg" alt="Логотип компании">
+                                <img src="img/company-logo1.svg" alt="Логотип компании" />
                                 <span>ПромТех</span>
                             </div>
                         </div>
@@ -1105,7 +1131,7 @@
                         <div class="challenge-card-header">
                             <span class="challenge-category">Агротехнологии</span>
                             <div class="challenge-org">
-                                <img src="img/company-logo2.svg" alt="Логотип компании">
+                                <img src="img/company-logo2.svg" alt="Логотип компании" />
                                 <span>АгроИнновации</span>
                             </div>
                         </div>
@@ -1169,33 +1195,7 @@
         </div>
     </footer>
 
-    <!-- AI Chatbot Widget -->
-    <div class="chatbot-widget" id="chatbotWidget">
-        <div class="chatbot-button" id="chatbotButton">
-            <i class="fas fa-comment-dots"></i>
-        </div>
-        <div class="chatbot-container" id="chatbotContainer">
-            <div class="chatbot-header">
-                <h3>AI Ассистент</h3>
-                <button class="chatbot-close" id="chatbotClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages">
-                <div class="chat-message bot-message">
-                    <div class="message-content">
-                        <p>Здравствуйте! Я AI-ассистент Munis Science Hub. Чем могу помочь вам сегодня? Опишите ваш запрос или проблему, и я подберу подходящие проекты или специалистов.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbotInput" placeholder="Напишите ваш вопрос...">
-                <button id="chatbotSend">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+    <script defer src="https://static.getbutton.io/widget/bundle.js?id=Jc3vN"></script>
 
     <script>
         // Sticky header
@@ -1225,13 +1225,17 @@
             const chatbotMessages = document.getElementById('chatbotMessages');
 
             // Toggle chatbot visibility
-            chatbotButton.addEventListener('click', function() {
-                chatbotContainer.classList.add('active');
-            });
+            if (chatbotButton) {
+                chatbotButton.addEventListener('click', function() {
+                    chatbotContainer.classList.add('active');
+                });
+            }
 
-            chatbotClose.addEventListener('click', function() {
-                chatbotContainer.classList.remove('active');
-            });
+            if (chatbotClose) {
+                chatbotClose.addEventListener('click', function() {
+                    chatbotContainer.classList.remove('active');
+                });
+            }
 
             // Send message function
             function sendMessage() {
@@ -1337,12 +1341,16 @@
             }
 
             // Send message events
-            chatbotSend.addEventListener('click', sendMessage);
-            chatbotInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
+            if (chatbotSend) {
+                chatbotSend.addEventListener('click', sendMessage);
+            }
+            if (chatbotInput) {
+                chatbotInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
         });
     </script>
 </body>

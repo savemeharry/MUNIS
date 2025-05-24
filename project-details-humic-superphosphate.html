@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Twin Based Education Platform for STEM | Munis Science Hub</title>
+    <title>Гуминовое суперфосфатное удобрение - Агротехнологии | Munis Science Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
+                :root {
             /* Цветовая схема */
-            --primary: #4361ee;
-            --primary-light: #738bff;
-            --primary-dark: #3a56d4;
-            --secondary: #06d6a0;
-            --accent: #ef476f;
+            --primary: #2563eb;
+            --primary-light: #60a5fa;
+            --primary-dark: #1d4ed8;
+            --secondary: #06b6d4;
+            --accent: #2ec4b6;
             --neutral-50: #f8fafc;
             --neutral-100: #f1f5f9;
             --neutral-200: #e2e8f0;
@@ -27,7 +27,6 @@
             --success: #06d6a0;
             --warning: #ffd166;
             --error: #ef476f;
-            --info: #118ab2;
             
             /* Типографика */
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
@@ -258,7 +257,7 @@
 
         /* Project Header */
         .project-header {
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(6, 214, 160, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(67, 97, 238, 0.05) 100%);
             padding: 2rem 0 3rem;
             position: relative;
             overflow: hidden;
@@ -271,7 +270,7 @@
             right: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
             border-radius: 50%;
         }
         
@@ -299,7 +298,6 @@
             position: relative;
             z-index: 1;
         }
-        
         .project-categories {
             display: flex;
             gap: 0.75rem;
@@ -308,7 +306,7 @@
         
         .project-category {
             background-color: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
+            color: var(--agro);color: var(--primary);
             padding: 0.375rem 0.875rem;
             border-radius: var(--radius-full);
             font-size: var(--font-size-sm);
@@ -316,8 +314,8 @@
         }
         
         .project-budget {
-            background-color: rgba(255, 209, 102, 0.2);
-            color: #b8860b;
+            background-color: rgba(46, 196, 182, 0.1);
+            color: var(--accent);color: var(--accent);
             padding: 0.375rem 0.875rem;
             border-radius: var(--radius-full);
             font-size: var(--font-size-sm);
@@ -346,7 +344,7 @@
         }
         
         .meta-item i {
-            color: var(--primary);
+            color: var(--agro);
             width: 16px;
         }
         
@@ -406,7 +404,7 @@
         }
         
         .progress-stage.active .stage-icon {
-            background: var(--primary);
+            background: var(--agro);
             color: white;
             animation: pulse 2s infinite;
         }
@@ -427,7 +425,7 @@
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--success) 0%, var(--primary) 100%);
+            background: linear-gradient(90deg, var(--success) 0%, var(--primary) 100%), var(--chemical) 100%;
             border-radius: var(--radius-full);
             transition: width 0.5s ease;
         }
@@ -505,8 +503,8 @@
         }
 
         .solution-box {
-            background: rgba(6, 214, 160, 0.05);
-            border-left: 4px solid var(--success);
+            background: rgba(22, 163, 74, 0.05);
+            border-left: 4px solid var(--agro);
         }
 
         .info-grid {
@@ -525,7 +523,20 @@
 
         .info-item h4 {
             margin-bottom: 0.5rem;
-            color: var(--primary);
+            color: var(--agro);
+        }
+
+        .efficiency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--agro);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            margin-top: 0.5rem;
         }
 
         /* Sidebar */
@@ -586,7 +597,7 @@
         }
         
         .contact-item i {
-            color: var(--primary);
+            color: var(--agro);
             width: 16px;
         }
 
@@ -600,8 +611,7 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            
-            .problem-solution {
+        .problem-solution {
                 grid-template-columns: 1fr;
             }
         }
@@ -639,27 +649,26 @@
     </style>
 </head>
 <body>
-    <script>
-        function checkPassword() {
-            if (localStorage.getItem("passwordEntered") === "true") {
-                return true;
-            }
-            var password = prompt("Введите пароль для доступа к сайту:", "");
-            if (password === "1234554321") {
-                localStorage.setItem("passwordEntered", "true");
-                return true;
-            } else {
-                alert("Неверный пароль!");
-                localStorage.removeItem("passwordEntered");
-                document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
-                return false;
-            }
+<script>
+    function checkPassword() {
+        if (localStorage.getItem("passwordEntered") === "true") {
+            return true;
         }
-        if (!checkPassword()) {
-            // Дополнительная логика, если пароль не был введен или неверен
+        var password = prompt("Введите пароль для доступа к сайту:", "");
+        if (password === "1234554321") {
+            localStorage.setItem("passwordEntered", "true");
+            return true;
+        } else {
+            alert("Неверный пароль!");
+            localStorage.removeItem("passwordEntered");
+            document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
+            return false;
         }
-    </script>
-
+    }
+    if (!checkPassword()) {
+        // Дополнительная логика, если пароль не был введен или неверен
+    }
+</script>
     <header class="main-header">
         <div class="container">
             <div class="header-content">
@@ -692,30 +701,30 @@
                 <div class="project-header-content">
                     <div class="project-header-main">
                         <div class="project-categories">
-                            <span class="project-category">Образование</span>
-                            <span class="project-budget">$148.329</span>
+                            <span class="project-category">Агротехнологии</span>
+                            <span class="project-budget">$172K</span>
                         </div>
-                        <h1 class="project-title">RCP-01/1 Digital Twin Based Education Platform for STEM</h1>
+                        <h1 class="project-title">RCP-01/54 Гуминовое суперфосфатное удобрение</h1>
                         
                         <div class="project-meta-large">
                             <div class="meta-item">
                                 <i class="fas fa-building"></i>
-                                <span>OOO «Raqamli Innovatsion Sanoat Texnologiyalari»</span>
+                                <span>ООО «EcoFertilizer Innovation»</span>
                             </div>
                             <div class="meta-item">
                                 <i class="fas fa-user"></i>
-                                <span>Руководитель: Жасурхужа Холхужаев</span>
+                                <span>Руководитель: Акрамов Нодир Турсунович</span>
                             </div>
                             <div class="meta-item">
                                 <i class="fas fa-handshake"></i>
-                                <span>Партнер: Туринский политехнический университет в Ташкенте</span>
+                                <span>Партнер: ООО «Sustainable Agriculture Tech»</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="project-header-actions">
                         <button class="btn btn-primary btn-lg">Связаться с командой</button>
-                        <button class="btn btn-outline btn-lg">Скачать презентацию</button>
+                        <button class="btn btn-outline btn-lg">Образцы продукции</button>
                         <div class="project-share">
                             <button class="btn btn-icon">
                                 <i class="fas fa-share-alt"></i>
@@ -731,25 +740,25 @@
                     <div class="progress-stages">
                         <div class="progress-stage completed">
                             <div class="stage-icon">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-flask"></i>
                             </div>
-                            <span>Концепция</span>
+                            <span>Формулировка</span>
                         </div>
                         <div class="progress-stage completed">
                             <div class="stage-icon">
-                                <i class="fas fa-code"></i>
+                                <i class="fas fa-seedling"></i>
                             </div>
-                            <span>Разработка</span>
+                            <span>Полевые тесты</span>
                         </div>
                         <div class="progress-stage active">
                             <div class="stage-icon">
-                                <i class="fas fa-vial"></i>
+                                <i class="fas fa-industry"></i>
                             </div>
-                            <span>Тестирование</span>
+                            <span>Масштабирование</span>
                         </div>
                         <div class="progress-stage">
                             <div class="stage-icon">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-shipping-fast"></i>
                             </div>
                             <span>Коммерциализация</span>
                         </div>
@@ -757,11 +766,11 @@
                             <div class="stage-icon">
                                 <i class="fas fa-globe"></i>
                             </div>
-                            <span>Масштабирование</span>
+                            <span>Экспорт</span>
                         </div>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%"></div>
+                        <div class="progress-fill" style="width: 90%"></div>
                     </div>
                 </div>
             </div>
@@ -771,96 +780,134 @@
             <div class="container">
                 <div class="project-layout">
                     <div class="project-main">
-                        <div class="content-section">
+                                                <div class="content-section">
                             <h2>О проекте</h2>
-                            <img src="img/projects/RCP 01-1.png" alt="Digital Twin Based Education Platform" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
-                            <p>Платформа обучения STEM на основе технологии цифровых двойников представляет собой инновационное решение для дистанционного обучения промышленным процессам через облачные технологии с возможностью удалённого управления реальным оборудованием.</p>
+                            <img src="img/projects/RCP-01-54.png" alt="Humic Superphosphate" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
+                            
+                            <p>Инновационное органо-минеральное удобрение, сочетающее гуминовые кислоты и суперфосфат для повышения урожайности и улучшения почвенного плодородия на 25-30%.</p>
+                            
+                            <div class="efficiency-badge">
+                                <i class="fas fa-leaf"></i>
+                                <span>Урожайность +25-30%</span>
+                            </div>
                             
                             <div class="info-grid">
                                 <div class="info-item">
                                     <h4>Организация-грантополучатель</h4>
-                                    <p>OOO «Raqamli Innovatsion Sanoat Texnologiyalari»</p>
+                                    <p>ООО «EcoFertilizer Innovation»</p>
                                 </div>
                                 <div class="info-item">
                                     <h4>Официальное название</h4>
-                                    <p>Платформа обучения STEM на основе технологии цифровых двойников</p>
+                                    <p>Гуминовое суперфосфатное удобрение для повышения плодородия почв</p>
                                 </div>
                                 <div class="info-item">
                                     <h4>Код проекта</h4>
-                                    <p>RCP-01/1</p>
+                                    <p>RCP-01/54</p>
                                 </div>
                                 <div class="info-item">
                                     <h4>Руководитель проекта</h4>
-                                    <p>Жасурхужа Холхужаев</p>
+                                    <p>Акрамов Нодир Турсунович</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="content-section">
+                                                <div class="content-section">
+                            <h2>О проекте</h2>
+                            <img src="img/projects/RCP-01-54.png" alt="Humic Superphosphate" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
                             <h2>Проблема и решение</h2>
                             <div class="problem-solution">
                                 <div class="problem-box">
                                     <h3>Решаемые проблемы</h3>
                                     <ul>
-                                        <li>Высокие затраты на создание лабораторий в учебных заведениях</li>
-                                        <li>Низкая доступность практического обучения для студентов</li>
-                                        <li>Отставание образовательной инфраструктуры от требований индустрии 4.0</li>
+                                        <li>Снижение плодородия почв из-за интенсивного земледелия</li>
+                                        <li>Низкая эффективность традиционных минеральных удобрений</li>
+                                        <li>Плохая усвояемость фосфора растениями в щелочных почвах</li>
+                                        <li>Деградация почвенной структуры и микробиома</li>
+                                        <li>Высокие экологические риски от чрезмерного внесения удобрений</li>
                                     </ul>
                                 </div>
                                 <div class="solution-box">
                                     <h3>Цель проекта</h3>
-                                    <p>Создание образовательной платформы, использующей цифровых двойников для дистанционного обучения STEM-дисциплинам и управления физическими роботизированными системами.</p>
+                                    <p>Создание экологически безопасного органо-минерального удобрения, сочетающего гуминовые кислоты и суперфосфат для улучшения усвояемости питательных веществ, повышения урожайности и восстановления почвенного плодородия.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="content-section">
+                                                <div class="content-section">
+                            <h2>О проекте</h2>
+                            <img src="img/projects/RCP-01-54.png" alt="Humic Superphosphate" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
                             <h2>Технологическое решение</h2>
-                            <p>Доступное обучение промышленным процессам для учреждений среднего специального, профессионального и высшего образования через облачные технологии.</p>
+                            <p>Инновационная технология производства органо-минерального удобрения:</p>
                             
-                            <h3>Ключевые особенности:</h3>
+                            <h3>Ключевые компоненты:</h3>
                             <ul>
-                                <li>Цифровые двойники промышленного оборудования</li>
-                                <li>Удалённое управление реальными системами</li>
-                                <li>Облачная инфраструктура для доступа</li>
-                                <li>Интерактивные 3D-модели лабораторных установок</li>
-                                <li>Образовательные курсы и методические материалы</li>
+                                <li>Суперфосфат как основной источник фосфора</li>
+                                <li>Гуминовые кислоты из местного органического сырья</li>
+                                <li>Микроэлементы для сбалансированного питания растений</li>
+                                <li>Органические активаторы для улучшения почвенной микрофлоры</li>
+                                <li>Стабилизаторы для длительного действия удобрения</li>
+                            </ul>
+                            
+                            <h3>Агрономические преимущества:</h3>
+                            <ul>
+                                <li>Повышение урожайности на 25-30%</li>
+                                <li>Улучшение усвояемости фосфора в 2-3 раза</li>
+                                <li>Увеличение содержания гумуса в почве</li>
+                                <li>Активация почвенной микрофлоры</li>
+                                <li>Улучшение водоудерживающей способности почвы</li>
+                                <li>Снижение потребности в минеральных удобрениях на 20%</li>
+                                <li>Пролонгированное действие до 2-3 лет</li>
                             </ul>
                         </div>
 
-                        <div class="content-section">
+                                                <div class="content-section">
+                            <h2>О проекте</h2>
+                            <img src="img/projects/RCP-01-54.png" alt="Humic Superphosphate" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
                             <h2>Текущий статус проекта</h2>
                             <div class="info-grid">
                                 <div class="info-item">
-                                    <h4>Прототип готов</h4>
-                                    <p>Создан прототип цифрового двойника с возможностью удалённого управления реальным оборудованием</p>
+                                    <h4>Формула оптимизирована</h4>
+                                    <p>Разработан оптимальный состав удобрения с учетом местных почвенно-климатических условий</p>
                                 </div>
                                 <div class="info-item">
-                                    <h4>Образовательный контент</h4>
-                                    <p>Разработан учебный курс и 3D-модели лабораторных установок</p>
+                                    <h4>Полевые испытания</h4>
+                                    <p>Проведены успешные испытания на различных сельскохозяйственных культурах</p>
                                 </div>
                                 <div class="info-item">
-                                    <h4>Анализ рынка</h4>
-                                    <p>Проведены тестирования платформы с 13 компаниями для анализа требований рынка</p>
+                                    <h4>Масштабирование производства</h4>
+                                    <p>Налаживается промышленное производство удобрения для выхода на рынок</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="content-section">
+                                                <div class="content-section">
+                            <h2>О проекте</h2>
+                            <img src="img/projects/RCP-01-54.png" alt="Humic Superphosphate" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 1.5rem;">
                             <h2>Планы по развитию</h2>
-                            
-                            <h3>Исследования и доработки</h3>
-                            <p>Расширение функционала платформы за счёт улучшения цифрового двойника и интеграции новых промышленных сценариев.</p>
                             
                             <h3>Коммерциализация</h3>
                             <ul>
-                                <li>Продажа образовательных услуг</li>
-                                <li>Лицензирование платформы</li>
-                                <li>Ориентация фокуса на индустриальные предприятия для повышения масштаба проекта</li>
+                                <li>Запуск полномасштабного производства гуминового суперфосфата</li>
+                                <li>Создание дилерской сети по всему Узбекистану</li>
+                                <li>Регистрация удобрения в государственном реестре</li>
+                                <li>Подготовка к экспорту в страны Центральной Азии</li>
+                            </ul>
+                            
+                            <h3>Исследования и доработки</h3>
+                            <ul>
+                                <li>Разработка специализированных составов для разных культур</li>
+                                <li>Создание жидких форм удобрения для фертигации</li>
+                                <li>Исследования совместимости с другими агрохимикатами</li>
+                                <li>Оптимизация технологии для снижения себестоимости</li>
                             </ul>
                             
                             <h3>Ожидаемые результаты</h3>
-                            <p>Охват адресного рынка на уровне 5% или 2 млн долларов США.</p>
+                            <ul>
+                                <li>Увеличение урожайности основных культур на 25-30%</li>
+                                <li>Восстановление плодородия деградированных почв</li>
+                                <li>Создание устойчивого экологического земледелия</li>
+                                <li>Экспорт продукции в объеме до $5 млн в год</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -869,19 +916,19 @@
                             <h3>Бюджет проекта</h3>
                             <div class="financial-item">
                                 <span class="financial-label">Общий бюджет</span>
-                                <span class="financial-value">$148.329</span>
+                                <span class="financial-value">$172,000</span>
                             </div>
                             <div class="financial-item">
                                 <span class="financial-label">Сумма гранта</span>
-                                <span class="financial-value">$122.990</span>
+                                <span class="financial-value">$150,000</span>
                             </div>
                             <div class="financial-item">
                                 <span class="financial-label">Со-финансирование</span>
-                                <span class="financial-value">$25.339</span>
+                                <span class="financial-value">$22,000</span>
                             </div>
                             <div class="financial-item">
                                 <span class="financial-label">Доля со-финансирования</span>
-                                <span class="financial-value">20.6%</span>
+                                <span class="financial-value">13%</span>
                             </div>
                         </div>
 
@@ -889,8 +936,12 @@
                             <h3>Инвесторы и партнёры</h3>
                             <div class="contact-info">
                                 <div class="contact-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>ООО «Sustainable Agriculture Tech»</span>
+                                </div>
+                                <div class="contact-item">
                                     <i class="fas fa-university"></i>
-                                    <span>Туринский политехнический университет в Ташкенте</span>
+                                    <span>Ташкентский аграрный университет</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-globe"></i>
@@ -904,15 +955,15 @@
                             <div class="contact-info">
                                 <div class="contact-item">
                                     <i class="fas fa-user"></i>
-                                    <span>Жасурхужа Холхужаев</span>
+                                    <span>Акрамов Нодир Турсунович</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-building"></i>
-                                    <span>OOO «Raqamli Innovatsion Sanoat Texnologiyalari»</span>
+                                    <span>ООО «EcoFertilizer Innovation»</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="fas fa-envelope"></i>
-                                    <span>info@digitaltwinedu.uz</span>
+                                    <span>info@ecofertilizer.uz</span>
                                 </div>
                             </div>
                         </div>
@@ -920,16 +971,20 @@
                         <div class="sidebar-section">
                             <h3>Ключевые метрики</h3>
                             <div class="financial-item">
-                                <span class="financial-label">Целевой рынок</span>
-                                <span class="financial-value">$2M</span>
+                                <span class="financial-label">Рост урожайности</span>
+                                <span class="financial-value">25-30%</span>
                             </div>
                             <div class="financial-item">
-                                <span class="financial-label">Доля рынка</span>
-                                <span class="financial-value">5%</span>
+                                <span class="financial-label">Усвояемость фосфора</span>
+                                <span class="financial-value">2-3x</span>
                             </div>
                             <div class="financial-item">
-                                <span class="financial-label">Партнеров протестировано</span>
-                                <span class="financial-value">13</span>
+                                <span class="financial-label">Длительность действия</span>
+                                <span class="financial-value">2-3 года</span>
+                            </div>
+                            <div class="financial-item">
+                                <span class="financial-label">Целевой экспорт</span>
+                                <span class="financial-value">$5M/год</span>
                             </div>
                         </div>
                     </div>
@@ -951,20 +1006,6 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.main-header');
             header.classList.toggle('sticky', window.scrollY > 10);
-        });
-
-        // Gallery functionality (if needed)
-        const thumbs = document.querySelectorAll('.thumb');
-        const mainImage = document.querySelector('.main-image');
-        
-        thumbs.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                thumbs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                if (mainImage) {
-                    mainImage.src = this.src.replace('w=150', 'w=800');
-                }
-            });
         });
     </script>
 </body>

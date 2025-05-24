@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О проекте MUNIS - Munis Science Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #2ec4b6;
+            --accent: #ff9f1c;
+            --dark: #0d1b2a;
+            --gray-dark: #1b263b;
+            --gray: #415a77;
+            --gray-light: #778da9;
+            --light: #e0e1dd;
+            --white: #ffffff;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e71d36;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Styles */
+        .main-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text .accent {
+            color: var(--primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+
+        .main-nav a.active {
+            color: var(--primary);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--dark);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 6rem 0 4rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.2s;
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text strong {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(46, 196, 182, 0.05) 100%);
+            padding: 4rem 0;
+            border-radius: 16px;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-detail {
+            font-size: 0.9rem;
+            color: var(--gray-light);
+        }
+
+        /* Project Funnel Table */
+        .funnel-section {
+            margin: 5rem 0;
+        }
+
+        .funnel-table-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .funnel-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .funnel-table thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .funnel-table th {
+            padding: 1.5rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+        }
+
+        .funnel-table th:first-child {
+            width: 100px;
+        }
+
+        .funnel-table th:nth-child(2) {
+            width: 120px;
+        }
+
+        .funnel-table tbody tr {
+            transition: var(--transition);
+        }
+
+        .funnel-table tbody tr:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .funnel-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid var(--light);
+            font-size: 1rem;
+        }
+
+        .program-cell {
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            margin: 0.25rem;
+        }
+
+        .program-rep { background-color: #FFE135; color: #333; }
+        .program-rcp { background-color: #FFD23F; color: #333; }
+        .program-bird { background-color: #90EE90; color: #333; }
+        .program-prim { background-color: #98FB98; color: #333; }
+        .program-icp { background-color: #DDA0DD; color: #333; }
+        .program-total { background-color: #B0B0B0; color: white; font-weight: 700; }
+
+        .number-cell {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .total-row {
+            background-color: rgba(176, 176, 176, 0.1);
+            font-weight: 700;
+        }
+
+        .total-row .program-cell {
+            background-color: #B0B0B0;
+            color: white;
+        }
+
+        /* Key Features */
+        .features-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(46, 196, 182, 0.05) 100%);
+            padding: 4rem 0;
+            border-radius: 16px;
+            margin: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.03) 0%, rgba(46, 196, 182, 0.03) 100%);
+            padding: 6rem 0;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .results-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(46, 196, 182, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .results-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .results-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 2px;
+        }
+
+        .results-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-category {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .achievement-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .category-header {
+            padding: 2.5rem 2rem 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.02) 0%, rgba(46, 196, 182, 0.02) 100%);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .category-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .category-header p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .achievement-items {
+            padding: 1.5rem 2rem 2.5rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(224, 225, 221, 0.5);
+            transition: var(--transition);
+        }
+
+        .achievement-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(5px);
+        }
+
+        .achievement-item.highlight {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.03) 0%, rgba(46, 196, 182, 0.03) 100%);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .achievement-item.highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.1);
+        }
+
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(46, 196, 182, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .achievement-item.highlight .achievement-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .achievement-content {
+            flex: 1;
+        }
+
+        .achievement-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .achievement-item.highlight .achievement-content h4 {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .achievement-content p {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .investment-breakdown {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(224, 225, 221, 0.3);
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .breakdown-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .breakdown-item .amount {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .breakdown-item .description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-align: right;
+            max-width: 60%;
+        }
+
+        /* Responsive Design for Results Section */
+        @media (max-width: 1024px) {
+            .achievements-grid {
+                gap: 2rem;
+            }
+            
+            .category-header {
+                padding: 2rem 1.5rem 1rem;
+            }
+            
+            .achievement-items {
+                padding: 1rem 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .results-section {
+                padding: 4rem 0;
+            }
+            
+            .results-header h2 {
+                font-size: 2rem;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .category-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .achievement-item {
+                gap: 1rem;
+            }
+            
+            .achievement-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .breakdown-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .breakdown-item .description {
+                text-align: left;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .results-section {
+                padding: 3rem 0;
+            }
+            
+            .category-header {
+                padding: 1.5rem 1rem 1rem;
+            }
+            
+            .achievement-items {
+                padding: 1rem 1rem 1.5rem;
+            }
+            
+            .achievement-item.highlight {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .funnel-table-container {
+                overflow-x: auto;
+            }
+
+            .funnel-table {
+                min-width: 800px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo p {
+            color: var(--gray-light);
+            margin-top: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-dark);
+            color: var(--gray-light);
+        }
+
+        /* Chairman Message Section */
+        .chairman-message-section {
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .chairman-message-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+            padding: 2.5rem;
+            position: relative;
+            z-index: 1;
+            border-left: 4px solid var(--primary);
+        }
+
+        .chairman-photo {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .chairman-photo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--light);
+            transition: var(--transition);
+        }
+
+        .chairman-photo img:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .chairman-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .chairman-quote p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .chairman-quote p:first-child::before {
+            content: '"';
+            position: absolute;
+            left: -20px;
+            top: -5px;
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .chairman-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .chairman-quote p:last-child::after {
+            content: '"';
+            color: var(--primary);
+            opacity: 0.3;
+            font-size: 1.2rem;
+            font-family: Georgia, serif;
+        }
+
+        .chairman-quote strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Responsive Design for Chairman Section */
+        @media (max-width: 768px) {
+            .chairman-message-section {
+                padding: 3rem 0;
+            }
+            
+            .chairman-message-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem;
+                text-align: center;
+            }
+            
+            .chairman-photo {
+                justify-content: center;
+            }
+            
+            .chairman-photo img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .chairman-quote p:first-child::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .chairman-message-section {
+                padding: 2rem 0;
+            }
+            
+            .chairman-message-container {
+                padding: 1.5rem;
+            }
+            
+            .chairman-photo img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .chairman-quote p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Chatbot Widget Styles */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+            transition: var(--transition);
+            color: white;
+            font-size: 24px;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-dark);
+        }
+
+        .chatbot-container {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-container.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        .chatbot-header {
+            padding: 15px 20px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .chatbot-close:hover {
+            opacity: 1;
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .user-message .message-content {
+            background-color: var(--primary);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot-message .message-content {
+            background-color: var(--light);
+            color: var(--dark);
+            border-bottom-left-radius: 4px;
+        }
+
+        .project-suggestion {
+            background-color: white;
+            border: 1px solid var(--light);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            margin-top: 8px;
+            transition: var(--transition);
+        }
+
+        .project-suggestion:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.1);
+        }
+
+        .project-suggestion h4 {
+            font-size: 0.95rem;
+            margin: 0 0 5px 0;
+            color: var(--primary);
+        }
+
+        .project-suggestion p {
+            font-size: 0.85rem;
+            margin: 0 0 8px 0;
+            color: var(--gray);
+        }
+
+        .project-link {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid var(--light);
+        }
+
+        #chatbotInput {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            border-radius: 18px;
+            background-color: var(--light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        #chatbotSend {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chatbotSend:hover {
+            background-color: var(--primary-dark);
+        }
+
+        @media (max-width: 576px) {
+            .chatbot-container {
+                width: 90vw;
+                height: 70vh;
+                bottom: 80px;
+                right: 0;
+            }
+            
+            .chatbot-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+    function checkPassword() {
+        if (localStorage.getItem("passwordEntered") === "true") {
+            return true;
+        }
+        var password = prompt("Введите пароль для доступа к сайту:", "");
+        if (password === "1234554321") {
+            localStorage.setItem("passwordEntered", "true");
+            return true;
+        } else {
+            alert("Неверный пароль!");
+            localStorage.removeItem("passwordEntered");
+            document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
+            return false;
+        }
+    }
+    if (!checkPassword()) {
+        // Дополнительная логика, если пароль не был введен или неверен
+    }
+</script>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image">
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="projects.html">Проекты</a></li>
+                        <li><a href="challenges.html">Запросы</a></li>
+                        <li><a href="about.html">О платформе</a></li>
+                        <li><a href="munis-about.html" class="active">О проекте MUNIS</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-outline">Войти</button>
+                    <button class="btn btn-primary">Регистрация</button>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>MUNIS — инновации, доверие и будущее Узбекистана</h1>
+                <p>Модернизация национальной инновационной системы Узбекистана при поддержке Всемирного банка</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="chairman-message-section">
+                <div class="chairman-message-container">
+                    <div class="chairman-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Председатель совета">
+                    </div>
+                    <div class="chairman-content">
+                        <div class="chairman-quote">
+                            <p>Как председатель Международного экспертного совета проекта MUNIS, я с гордостью могу сказать: за последние годы Узбекистан сделал важный шаг к построению экономики, основанной на знаниях и инновациях.</p>
+                            
+                            <p>Проект <strong>MUNIS (Модернизация национальной инновационной системы Узбекистана)</strong>, реализуемый при поддержке Всемирного банка с 2021 года, стал не просто источником финансирования, а настоящей платформой реформ. Его цель — превратить научные идеи в конкретные продукты, технологии, стартапы и компании, которые решают реальные задачи.</p>
+                            
+                            <p>С бюджетом в <strong>$50 млн</strong> и сроком до марта 2026 года, MUNIS охватывает четыре направления: модернизацию науки, поддержку МСБ, внедрение новых механизмов государственной инновационной политики и проектное управление.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">$50М</div>
+                            <div class="stat-label">Общий бюджет проекта</div>
+                            <div class="stat-detail">Финансирование до марта 2026</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">286</div>
+                            <div class="stat-label">Поддержанных проектов</div>
+                            <div class="stat-detail">По всей стране</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$17М</div>
+                            <div class="stat-label">Привлеченных инвестиций</div>
+                            <div class="stat-detail">Частный сектор</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$71М</div>
+                            <div class="stat-label">Интерес бизнеса</div>
+                            <div class="stat-detail">Заявленные инвестиции</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="container">
+                    <div class="results-header">
+                        <h2>Результаты говорят сами за себя</h2>
+                        <p>Достижения проекта MUNIS демонстрируют успешную трансформацию инновационной экосистемы Узбекистана</p>
+                    </div>
+
+                    <div class="achievements-grid">
+                        <div class="achievement-category">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h3>Системные изменения</h3>
+                                <p>Ключевой вклад проекта — это системные изменения</p>
+                            </div>
+                            <div class="achievement-items">
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>Прозрачные процедуры</h4>
+                                        <p>Впервые в Узбекистане внедрены прозрачные и конкурентные процедуры отбора и мониторинга грантовых проектов</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>Альтернативное финансирование</h4>
+                                        <p>Установлены альтернативные механизмы финансирования — с софинансированием от частного сектора и банков</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>Культура доверия</h4>
+                                        <p>Создана новая культура доверия к науке — как со стороны государства, так и со стороны бизнеса</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="achievement-category">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h3>Конкретные результаты</h3>
+                                <p>Измеримые достижения проекта MUNIS</p>
+                            </div>
+                            <div class="achievement-items">
+                                <div class="achievement-item highlight">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>286 проектов</h4>
+                                        <p>Поддержано по всей стране</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item highlight">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>$17 млн привлечено</h4>
+                                        <p>Частных инвестиций</p>
+                                        <div class="investment-breakdown">
+                                            <div class="breakdown-item">
+                                                <span class="amount">$2,9 млн</span>
+                                                <span class="description">в прикладные исследования и НИОКР</span>
+                                            </div>
+                                            <div class="breakdown-item">
+                                                <span class="amount">$14,1 млн</span>
+                                                <span class="description">в инновационные разработки МСБ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="achievement-item highlight">
+                                    <div class="achievement-icon">
+                                        <i class="fas fa-trending-up"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>$71 млн интереса</h4>
+                                        <p>Общий заявленный интерес бизнеса к инвестициям в инновации — это в разы превышает объем доступного финансирования</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Международная экспертиза</h3>
+                            <p>Международный экспертный совет обеспечивает объективность и качество принимаемых решений, основанных на лучших мировых практиках.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Партнёрство</h3>
+                            <p>Привлечение зарубежных экспертов позволило оценивать проекты по существу, с опорой на научную новизну и рыночный потенциал.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Инновационная экосистема</h3>
+                            <p>Формируется устойчивая экосистема, где наука и бизнес работают вместе, а инновации становятся частью повседневной экономики.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="funnel-section">
+                <h2>Воронка проектов</h2>
+                <p class="content-text">Детальная статистика по программам поддержки и их эффективности</p>
+                
+                <div class="funnel-table-container">
+                    <table class="funnel-table">
+                        <thead>
+                            <tr>
+                                <th>ПРОГРАММА</th>
+                                <th>ВЫДЕЛЕНО<br><span style="font-size: 0.8em; opacity: 0.8;">(mln USD)</span></th>
+                                <th colspan="3" style="text-align: center; background: #2d5aa6;">ПОДАННЫЕ ЗАЯВКИ</th>
+                                <th colspan="3" style="text-align: center; background: #1e3a5f;">ПРОФИНАНСИРОВАННЫЕ ПОДПРОЕКТЫ</th>
+                            </tr>
+                            <tr style="background: rgba(67, 97, 238, 0.8);">
+                                <th></th>
+                                <th></th>
+                                <th>Количество</th>
+                                <th>Запрашиваемая сумма гранта</th>
+                                <th>Сумма финансирования</th>
+                                <th>Количество</th>
+                                <th>Запрашиваемая сумма гранта</th>
+                                <th>Сумма финансирования</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><div class="program-cell program-rep">REP</div></td>
+                                <td class="number-cell">10</td>
+                                <td class="number-cell">199</td>
+                                <td class="number-cell">78,10</td>
+                                <td class="number-cell">N/A</td>
+                                <td class="number-cell">25</td>
+                                <td class="number-cell">9,90</td>
+                                <td class="number-cell">N/A</td>
+                            </tr>
+                            <tr>
+                                <td><div class="program-cell program-rcp">RCP</div></td>
+                                <td class="number-cell">4</td>
+                                <td class="number-cell">55</td>
+                                <td class="number-cell">6,4</td>
+                                <td class="number-cell">1,1</td>
+                                <td class="number-cell">9</td>
+                                <td class="number-cell">1,2</td>
+                                <td class="number-cell">0,2</td>
+                            </tr>
+                            <tr>
+                                <td><div class="program-cell program-bird">BIRD</div></td>
+                                <td class="number-cell">10</td>
+                                <td class="number-cell">156</td>
+                                <td class="number-cell">69,7</td>
+                                <td class="number-cell">28,9</td>
+                                <td class="number-cell">18</td>
+                                <td class="number-cell">9,4</td>
+                                <td class="number-cell">2,7</td>
+                            </tr>
+                            <tr>
+                                <td><div class="program-cell program-prim">PRIM</div></td>
+                                <td class="number-cell">6</td>
+                                <td class="number-cell">86</td>
+                                <td class="number-cell">16,59</td>
+                                <td class="number-cell">N/A</td>
+                                <td class="number-cell">24</td>
+                                <td class="number-cell">4,8</td>
+                                <td class="number-cell">N/A</td>
+                            </tr>
+                            <tr>
+                                <td><div class="program-cell program-icp">ICP</div></td>
+                                <td class="number-cell">10</td>
+                                <td class="number-cell">714</td>
+                                <td class="number-cell">37,80</td>
+                                <td class="number-cell">41,10</td>
+                                <td class="number-cell">211</td>
+                                <td class="number-cell">10,0</td>
+                                <td class="number-cell">14,1</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><div class="program-cell program-total">ИТОГО</div></td>
+                                <td class="number-cell">40</td>
+                                <td class="number-cell">1 210</td>
+                                <td class="number-cell">209,2</td>
+                                <td class="number-cell">71,1</td>
+                                <td class="number-cell">287</td>
+                                <td class="number-cell">35,3</td>
+                                <td class="number-cell">17,0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Заключение</h2>
+                <div class="content-text">
+                    <p>Сегодня в Узбекистане формируется устойчивая экосистема, где наука и бизнес работают вместе, где частный сектор верит в разработки узбекских учёных, а инновации становятся частью повседневной экономики.</p>
+                    
+                    <p><strong>Проект MUNIS — это доказательство того, что инновационная реформа возможна, если она опирается на идеи, партнёрство и доверие.</strong></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo/munis logo.png" alt="Munis Logo" class="logo-image footer-logo-image" style="filter: brightness(0) invert(1);">
+                    <p>Объединяем науку и бизнес для создания технологий будущего</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="footer-nav-section">
+                        <h4>Платформа</h4>
+                        <ul>
+                            <li><a href="projects.html">Проекты</a></li>
+                            <li><a href="challenges.html">Запросы</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="help.html">Помощь</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Для пользователей</h4>
+                        <ul>
+                            <li><a href="for-scientists.html">Ученым</a></li>
+                            <li><a href="for-investors.html">Инвесторам</a></li>
+                            <li><a href="for-business.html">Бизнесу</a></li>
+                            <li><a href="for-government.html">Госорганам</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav-section">
+                        <h4>Контакты</h4>
+                        <ul>
+                            <li><a href="mailto:info@scitechhub.uz">info@scitechhub.uz</a></li>
+                            <li><a href="tel:+998712345678">+998 (71) 234-56-78</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2023 Munis Science Hub. Все права защищены.</span>
+                <div class="footer-links">
+                    <a href="terms.html">Условия использования</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Widget -->
+    <script defer src="https://static.getbutton.io/widget/bundle.js?id=Jc3vN"></script>
+
+    <script>
+        // Sticky header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.main-header');
+            header.classList.toggle('sticky', window.scrollY > 10);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

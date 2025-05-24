@@ -369,13 +369,13 @@
             font-weight: 500;
         }
 
-        .project-trl {
-            background-color: rgba(46, 196, 182, 0.1);
-            color: var(--secondary);
+        .project-budget {
+            background-color: rgba(255, 159, 28, 0.1);
+            color: var(--accent);
             padding: 0.25rem 0.75rem;
             border-radius: 100px;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .project-title {
@@ -392,6 +392,39 @@
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
             flex-grow: 1;
+        }
+
+        .project-budget-info {
+            padding: 0 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+            padding: 1rem;
+        }
+
+        .budget-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .budget-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .budget-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .budget-value {
+            font-size: 0.85rem;
+            color: var(--dark);
+            font-weight: 600;
         }
 
         .project-footer {
@@ -638,6 +671,27 @@
     </style>
 </head>
 <body>
+<script>
+    function checkPassword() {
+        if (localStorage.getItem("passwordEntered") === "true") {
+            return true;
+        }
+        var password = prompt("Введите пароль для доступа к сайту:", "");
+        if (password === "1234554321") {
+            localStorage.setItem("passwordEntered", "true");
+            return true;
+        } else {
+            alert("Неверный пароль!");
+            localStorage.removeItem("passwordEntered");
+            document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
+            return false;
+        }
+    }
+    if (!checkPassword()) {
+        // Дополнительная логика, если пароль не был введен или неверен
+    }
+</script>
+
     <header class="main-header">
         <div class="container">
             <div class="header-content">
@@ -649,6 +703,7 @@
                         <li><a href="projects.html" class="active">Проекты</a></li>
                         <li><a href="challenges.html">Запросы</a></li>
                         <li><a href="about.html">О платформе</a></li>
+                        <li><a href="munis-about.html">О проекте MUNIS</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -668,8 +723,8 @@
         <section class="page-header">
             <div class="container">
                 <div class="page-header-content">
-                    <h1>Инновационные научные проекты</h1>
-                    <p>Исследуйте передовые проекты из различных научных областей, готовые к инвестициям и внедрению</p>
+                    <h1>Актуальные научные проекты MUNIS</h1>
+                    <p>10 передовых исследовательских проектов из различных научных областей, реализуемых при поддержке программы MUNIS. От платформ обучения STEM до медицинских AI-решений.</p>
                 </div>
             </div>
         </section>
@@ -679,154 +734,383 @@
                 <div class="projects-filters">
                     <div class="filter-categories">
                         <button class="filter-btn active">Все</button>
-                        <button class="filter-btn">Биотехнологии</button>
-                        <button class="filter-btn">Энергетика</button>
-                        <button class="filter-btn">Медицина</button>
+                        <button class="filter-btn">Образование</button>
                         <button class="filter-btn">AI/ML</button>
-                        <button class="filter-btn">Материаловедение</button>
+                        <button class="filter-btn">Медицина</button>
+                        <button class="filter-btn">Биотехнологии</button>
                         <button class="filter-btn">Агротехнологии</button>
+                        <button class="filter-btn">Материаловедение</button>
+                        <button class="filter-btn">Промышленность</button>
                     </div>
                     <div class="projects-sort">
                         <span class="sort-label">Сортировать по:</span>
                         <select class="sort-select">
                             <option value="newest">Новизне</option>
-                            <option value="trl">Уровню готовности (TRL)</option>
-                            <option value="investment">Требуемым инвестициям</option>
-                            <option value="popularity">Популярности</option>
+                            <option value="budget">Бюджету проекта</option>
+                            <option value="grant">Размеру гранта</option>
+                            <option value="status">Статусу развития</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="projects-grid">
-                    <!-- Project Card 1 -->
+                    <!-- Project Card 1: RCP-01/1 Digital Twin -->
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Биоразлагаемые полимеры из микроводорослей">
+                            <img src="img/projects/RCP 01-1.png" alt="Digital Twin Based Education Platform">
                         </div>
                         <div class="project-card-header">
-                            <span class="project-category">Биотехнологии</span>
-                            <span class="project-trl">TRL 6</span>
+                            <span class="project-category">Образование</span>
+                            <span class="project-budget">$148K</span>
                         </div>
-                        <h3 class="project-title">Биоразлагаемые полимеры из микроводорослей</h3>
-                        <p class="project-desc">Новая технология производства экологичных полимеров с использованием биомассы микроводорослей. Полное разложение за 6 месяцев в естественной среде.</p>
-                        <div class="project-footer">
-                            <div class="project-stage">
-                                <div class="stage-bar">
-                                    <div class="stage-progress" style="width: 65%"></div>
-                                </div>
-                                <span class="stage-label">Пилотное внедрение</span>
+                        <h3 class="project-title">RCP-01/1 Digital Twin Based Education Platform for STEM</h3>
+                        <p class="project-desc">Платформа обучения STEM на основе технологии цифровых двойников. Доступное обучение промышленным процессам через облачные технологии с возможностью удалённого управления реальным оборудованием.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$122,990</span>
                             </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Card 2 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Высокоэффективные перовскитные солнечные элементы">
-                        </div>
-                        <div class="project-card-header">
-                            <span class="project-category">Энергетика</span>
-                            <span class="project-trl">TRL 4</span>
-                        </div>
-                        <h3 class="project-title">Высокоэффективные перовскитные солнечные элементы</h3>
-                        <p class="project-desc">Технология изготовления солнечных панелей нового поколения с КПД выше 30% и сниженной стоимостью производства.</p>
-                        <div class="project-footer">
-                            <div class="project-stage">
-                                <div class="stage-bar">
-                                    <div class="stage-progress" style="width: 40%"></div>
-                                </div>
-                                <span class="stage-label">Лабораторные испытания</span>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$25,339</span>
                             </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Жасурхужа Холхужаев</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <!-- Project Card 3 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Экспресс-тест для диагностики инфекционных заболеваний">
-                        </div>
-                        <div class="project-card-header">
-                            <span class="project-category">Медицина</span>
-                            <span class="project-trl">TRL 7</span>
-                        </div>
-                        <h3 class="project-title">Экспресс-тест для диагностики инфекционных заболеваний</h3>
-                        <p class="project-desc">Портативная система для быстрой диагностики инфекций по образцу биоматериала с точностью до 99,2% за 15 минут.</p>
                         <div class="project-footer">
                             <div class="project-stage">
                                 <div class="stage-bar">
                                     <div class="stage-progress" style="width: 75%"></div>
                                 </div>
-                                <span class="stage-label">Клинические испытания</span>
+                                <span class="stage-label">Тестирование платформы</span>
                             </div>
                             <a href="project-details.html" class="btn btn-text">Подробнее</a>
                         </div>
                     </div>
-
-                    <!-- Project Card 4 -->
+                    
+                    <!-- Project Card 2: JobBro AI Platform -->
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Нейроинтерфейс для управления протезами">
-                        </div>
-                        <div class="project-card-header">
-                            <span class="project-category">Медицина</span>
-                            <span class="project-trl">TRL 5</span>
-                        </div>
-                        <h3 class="project-title">Нейроинтерфейс для управления протезами конечностей</h3>
-                        <p class="project-desc">Система считывания нейросигналов и преобразования их в команды управления бионическими протезами с тактильной обратной связью.</p>
-                        <div class="project-footer">
-                            <div class="project-stage">
-                                <div class="stage-bar">
-                                    <div class="stage-progress" style="width: 55%"></div>
-                                </div>
-                                <span class="stage-label">Прототип</span>
-                            </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 5 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Композитные материалы для аэрокосмической отрасли">
-                        </div>
-                        <div class="project-card-header">
-                            <span class="project-category">Материаловедение</span>
-                            <span class="project-trl">TRL 6</span>
-                        </div>
-                        <h3 class="project-title">Сверхлегкие композитные материалы для аэрокосмической отрасли</h3>
-                        <p class="project-desc">Инновационная технология производства композитов с улучшенными прочностными характеристиками при сниженном весе на 40%.</p>
-                        <div class="project-footer">
-                            <div class="project-stage">
-                                <div class="stage-bar">
-                                    <div class="stage-progress" style="width: 65%"></div>
-                                </div>
-                                <span class="stage-label">Пилотное внедрение</span>
-                            </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 6 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1581093458791-9ba3222907b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI система прогнозирования урожайности">
+                            <img src="img/projects/RCP 01-5.png" alt="JobBro AI Platform">
                         </div>
                         <div class="project-card-header">
                             <span class="project-category">AI/ML</span>
-                            <span class="project-trl">TRL 7</span>
+                            <span class="project-budget">$100K</span>
                         </div>
-                        <h3 class="project-title">AI система прогнозирования урожайности и оптимизации посевов</h3>
-                        <p class="project-desc">Платформа на основе искусственного интеллекта для анализа данных о почве, климате и культурах для максимизации урожайности.</p>
+                        <h3 class="project-title">RCP-01/5 JobBro - AI платформа поиска клиентов</h3>
+                        <p class="project-desc">ИИ платформа для аутсорс-агентств и фрилансеров с автоматической генерацией AI-контента для откликов и анализом рыночных трендов. Увеличение конверсии сделок на 30-32%.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$80,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$20,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Игорь Ким</span>
+                            </div>
+                        </div>
                         <div class="project-footer">
                             <div class="project-stage">
                                 <div class="stage-bar">
                                     <div class="stage-progress" style="width: 80%"></div>
                                 </div>
-                                <span class="stage-label">Внедрение</span>
+                                <span class="stage-label">MVP готов</span>
                             </div>
-                            <a href="project-details.html" class="btn btn-text">Подробнее</a>
+                            <a href="project-details-jobbro.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Card 3: X-Ray AI Expert -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP 01-6.png" alt="X-Ray AI Expert">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Медицина</span>
+                            <span class="project-budget">$173K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/6 AI для скрининговых рентгенологических исследований</h3>
+                        <p class="project-desc">Веб-приложение на основе ИИ для предварительного анализа рентгенологических изображений грудной клетки. Точность выше 90% ROC AUC, особенно для выявления туберкулёза.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$150,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$23,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Атаджан Хамраев</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 90%"></div>
+                                </div>
+                                <span class="stage-label">Веб-портал запущен</span>
+                            </div>
+                            <a href="project-details-xray-ai.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4: INNOPROVET -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP-01-31.png" alt="INNOPROVET">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Биотехнологии</span>
+                            <span class="project-budget">$161K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/31 Пробиотические препараты INNOPROVET</h3>
+                        <p class="project-desc">Разработка и производство пробиотических препаратов для аквакультуры на основе местных штаммов микроорганизмов. Профилактика заболеваний рыб и повышение конверсии корма.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$140,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$21,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Насимов Шухрат</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 70%"></div>
+                                </div>
+                                <span class="stage-label">Производство готово</span>
+                            </div>
+                            <a href="project-details-innoprovet.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5: Agricultural Equipment -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP-01-32.png" alt="Agricultural Equipment">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Агротехнологии</span>
+                            <span class="project-budget">$172K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/32 Широкозахватный мала-выравниватель с катком</h3>
+                        <p class="project-desc">Инновационное агротехническое орудие для одновременного выравнивания и уплотнения почвы за один проход. Снижение расхода топлива на 20-30% и повышение производительности.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$150,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$22,500</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Ботир Хушвактов</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 85%"></div>
+                                </div>
+                                <span class="stage-label">Демо-образцы готовы</span>
+                            </div>
+                            <a href="project-details-agricultural-leveler.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6: Bitumen Mastic -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP-01-36.png" alt="Bitumen Mastic">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Материаловедение</span>
+                            <span class="project-budget">$170K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/36 Гидроизоляционная битумная мастика</h3>
+                        <p class="project-desc">Высококачественная битумная мастика для защиты от коррозии трубопроводов и промышленных конструкций. Улучшенные характеристики устойчивости к погодным условиям.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$150,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$20,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Ботир Шукуруллаев</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 95%"></div>
+                                </div>
+                                <span class="stage-label">Производство запущено</span>
+                            </div>
+                            <a href="project-details-bitumen-mastic.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 7: Cotton Harvester -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP-01-39.png" alt="Cotton Harvester">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Агротехнологии</span>
+                            <span class="project-budget">$153K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/39 Технология уплотнения хлопка в бункере</h3>
+                        <p class="project-desc">Система автоматического уплотнения хлопка в бункере хлопкоуборочной машины и эффективной пневмотранспортировки. Снижение доли ручного труда и повышение производительности.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$133,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$20,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Хамидов Р.А.</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 60%"></div>
+                                </div>
+                                <span class="stage-label">Эскизные проекты</span>
+                            </div>
+                            <a href="project-details-cotton-harvester.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 8: HOMILA AI -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP-01-44.png" alt="HOMILA AI">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Медицина</span>
+                            <span class="project-budget">$175K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/44 HOMILA AI - мониторинг здоровья беременных</h3>
+                        <p class="project-desc">Мобильное приложение для прогнозирования осложнений при беременности с помощью ИИ. Точность выше 93%, персонализированная оценка рисков и мониторинг показателей здоровья.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$150,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$25,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Игорь Викров</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 85%"></div>
+                                </div>
+                                <span class="stage-label">Модели ИИ готовы</span>
+                            </div>
+                            <a href="project-details-homila-ai.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 9: Humic Superphosphate -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/RCP-01-54.png" alt="Humic Superphosphate">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Агротехнологии</span>
+                            <span class="project-budget">$172K</span>
+                        </div>
+                        <h3 class="project-title">RCP-01/54 Гуминовый суперфосфат из бурого угля</h3>
+                        <p class="project-desc">Экологичное удобрение на основе бурого угля и фосфоритных руд. Улучшенная усвояемость фосфора, восстановление структуры почвы и повышение урожайности.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$150,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$22,500</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Анваржон Абдуллаев</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 90%"></div>
+                                </div>
+                                <span class="stage-label">Оборудование закуплено</span>
+                            </div>
+                            <a href="project-details-humic-superphosphate.html" class="btn btn-text">Подробнее</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 10: SALOMATIC Clinical System -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="img/projects/BIRD-01-12.png" alt="SALOMATIC Clinical System">
+                        </div>
+                        <div class="project-card-header">
+                            <span class="project-category">Медицина</span>
+                            <span class="project-budget">$750K</span>
+                        </div>
+                        <h3 class="project-title">BIRD-01/12 AI-native клиническая информационная система</h3>
+                        <p class="project-desc">КИС нового поколения с генеративным ИИ для автоматизации документооборота и персонализированных рекомендаций. Снижает нагрузку на врачей до 50% рабочего времени.</p>
+                        <div class="project-budget-info">
+                            <div class="budget-row">
+                                <span class="budget-label">Грант:</span>
+                                <span class="budget-value">$600,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Со-финансирование:</span>
+                                <span class="budget-value">$150,000</span>
+                            </div>
+                            <div class="budget-row">
+                                <span class="budget-label">Руководитель:</span>
+                                <span class="budget-value">Ким Антон Сергеевич</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-stage">
+                                <div class="stage-bar">
+                                    <div class="stage-progress" style="width: 70%"></div>
+                                </div>
+                                <span class="stage-label">MVP завершён</span>
+                            </div>
+                            <a href="project-details-salomatic.html" class="btn btn-text">Подробнее</a>
                         </div>
                     </div>
                 </div>
@@ -834,8 +1118,6 @@
                 <div class="pagination">
                     <button class="pagination-btn active">1</button>
                     <button class="pagination-btn">2</button>
-                    <button class="pagination-btn">3</button>
-                    <button class="pagination-btn">4</button>
                     <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
@@ -919,5 +1201,6 @@
             });
         });
     </script>
+    <script defer src="https://static.getbutton.io/widget/bundle.js?id=Jc3vN"></script>
 </body>
 </html> 
