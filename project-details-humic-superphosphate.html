@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гуминовое суперфосфатное удобрение - Агротехнологии | Munis Science Hub</title>
-    <script src="auth.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -650,26 +649,6 @@
     </style>
 </head>
 <body>
-<script>
-    function checkPassword() {
-        if (localStorage.getItem("passwordEntered") === "true") {
-            return true;
-        }
-        var password = prompt("Введите пароль для доступа к сайту:", "");
-        if (password === "1234554321") {
-            localStorage.setItem("passwordEntered", "true");
-            return true;
-        } else {
-            alert("Неверный пароль!");
-            localStorage.removeItem("passwordEntered");
-            document.body.innerHTML = "<h1 style=\"text-align:center; margin-top: 50px;\">Доступ запрещен. Обновите страницу и попробуйте снова.</h1>";
-            return false;
-        }
-    }
-    if (!checkPassword()) {
-        // Дополнительная логика, если пароль не был введен или неверен
-    }
-</script>
     <header class="main-header">
         <div class="container">
             <div class="header-content">
